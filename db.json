@@ -1,0 +1,54 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment 1",
+      "name": "a"
+    },
+    {
+      "body": "some comment update",
+      "name": "update name",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "body": "some comment 3",
+      "name": "c"
+    },
+    {
+      "id": 4,
+      "body": "some comment 3",
+      "name": "d"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Tiếng Việt 1/2 (Chân Trời Sáng Tạo)",
+      "describe": "Sách giáo khoa cho trẻ, chương trình chính quy",
+      "cost": 31000,
+      "image": "https://cdn0.fahasa.com/media/catalog/product/9/7/9786040288165.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Thánh Thạch Rave Tập 3",
+      "describe": "Top 100 sản phẩm Manga Khác bán chạy của tháng",
+      "cost": 27000,
+      "image": "https://cdn0.fahasa.com/media/catalog/product/t/h/thanh-thach-rave---tap-3.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Doraemon Fly",
+      "describe": "Bạn có khao khát chinh phục bầu trời rộng lớn bao la, trải nghiệm những cảm giác mạnh và chứng tỏ lòng can đảm mạnh mẽ của chính bản thân mình? Hãy cùng tham gia cuộc đua bay lượn lý thú cùng nhóm bạn của chú mèo máy Doraemon dễ thương nhé.",
+      "cost": 50000,
+      "image": "https://cdn0.fahasa.com/media/catalog/product/8/9/8936038723180.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Người Lạ Dưới Gió Xuân - Tập 2",
+      "describe": "Shun, tiểu thuyết gia trẻ tuổi, đã dẫn người mình thương - Mio, trở lại quê nhà sau nhiều năm bặt vô âm tín.",
+      "cost": 107000,
+      "image": "https://cdn0.fahasa.com/media/catalog/product/n/l/nldgx2_1.jpg"
+    }
+  ]
+}
