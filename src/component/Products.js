@@ -1,9 +1,19 @@
-import MucLuc from "./MucLuc";
 import axios from "axios";
 import { Image } from "antd";
 import "./CSSComonent/Products.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getListProducts as getListProductsAction } from "../reduxSaga/action";
+import { useEffect } from "react";
+import { Button, Space } from "antd";
 
 function Products() {
+  const dispatch = useDispatch();
+  const listProducts = useSelector((state) => state.productsList);
+  const { products, load } = listProducts;
+  useEffect(() => {
+    dispatch(getListProductsAction());
+    console.log("data products", products);
+  }, []);
   const handleGetAPI = async () => {
     try {
       const config = {
@@ -12,7 +22,7 @@ function Products() {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:3000/comments`,
+        `http://localhost:3004/comments`,
         config
       );
       if (data) {
@@ -36,7 +46,7 @@ function Products() {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:3000/comments`,
+        `http://localhost:3004/comments`,
         { body: "some comment 5", postId: 5 },
         config
       );
@@ -57,7 +67,7 @@ function Products() {
         },
       };
       const { data } = await axios.delete(
-        `http://localhost:3000/comments/${3}`,
+        `http://localhost:3004/comments/${3}`,
         config
       );
       if (data) {
@@ -77,7 +87,7 @@ function Products() {
         },
       };
       const { data } = await axios.put(
-        `http://localhost:3000/comments/${2}`,
+        `http://localhost:3004/comments/${2}`,
         { body: "some comment update", name: "update name" },
         config
       );
@@ -105,22 +115,28 @@ function Products() {
         <button onClick={handleDeleteAPI}>Delete</button>
         <button onClick={handleUpdateAPI}>Update</button>
       </div>
-      <div>
-        <Image
-          width={200}
-          src={dataFake.image}
-          placeholder={
+      <div className="wrap_products">
+        {products.map((item, index) => (
+          <div>
             <Image
-              preview={false}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
               width={200}
+              src={item.image}
+              placeholder={
+                <Image
+                  preview={false}
+                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
+                  width={200}
+                />
+              }
             />
-          }
-        />
-        <p>{dataFake.name}</p>
-        <p>Giá: {dataFake.cost}</p>
+            <p>{item.name}</p>
+            <p>Giá: {item.cost}</p>
+            <Space wrap>
+              <Button type="primary">Xem chi tiết</Button>
+            </Space>
+          </div>
+        ))}
       </div>
-      <MucLuc></MucLuc>
     </div>
   );
 }
