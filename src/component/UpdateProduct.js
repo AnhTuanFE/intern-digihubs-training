@@ -11,12 +11,13 @@ const UpdateProduct = () => {
   const id = idProduct.id;
   const dispatch = useDispatch();
   const productInfor = useSelector((state) => state.productId.product);
+  const { name, describe, cost, image } = productInfor;
 
-  const [name, setName] = useState("");
-  const [describe, setDescribe] = useState("");
-  const [cost, setCost] = useState("");
-  const [image, setImage] = useState("");
-  const [dataChange, setDataChange] = useState(productInfor);
+  const [name1, setName] = useState("");
+  const [describe1, setDescribe] = useState("");
+  const [cost1, setCost] = useState("");
+  const [image1, setImage] = useState("");
+  // const [dataChange, setDataChange] = useState(productInfor);
 
   console.log("productInfor = ", productInfor);
   useEffect(() => {
@@ -26,10 +27,10 @@ const UpdateProduct = () => {
   const updateProduct = {
     id: id,
     product: {
-      name: name,
-      describe: describe,
-      cost: cost,
-      image: image,
+      name: name1,
+      describe: describe1,
+      cost: cost1,
+      image: image1,
     },
   };
   const handleUpdate = () => {
@@ -56,33 +57,37 @@ const UpdateProduct = () => {
         >
           <Form.Item label="Name Product">
             <Input
-              defaultValue={dataChange.name}
+              value={productInfor.name}
               onChange={(e) => {
-                setName(...e.target.value);
+                productInfor.name = e.target.value;
+                setName(productInfor.name);
               }}
             />
           </Form.Item>
           <Form.Item label="Describe">
             <TextArea
               rows={4}
-              defaultValue={dataChange.describe}
+              value={productInfor.describe}
               onChange={(e) => {
+                productInfor.describe = e.target.value;
                 setDescribe(e.target.value);
               }}
             />
           </Form.Item>
           <Form.Item label="Cost">
             <InputNumber
-              defaultValue={dataChange.cost}
+              value={productInfor.cost}
               onChange={(e) => {
+                productInfor.cost = e;
                 setCost(e);
               }}
             />
           </Form.Item>
           <Form.Item label="Link Image">
             <Input
-              defaultValue={dataChange.image}
+              value={productInfor.image}
               onChange={(e) => {
+                productInfor.image = e.target.value;
                 setImage(e.target.value);
               }}
             />

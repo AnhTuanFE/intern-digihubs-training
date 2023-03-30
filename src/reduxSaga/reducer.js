@@ -3,12 +3,12 @@ import * as types from "./constant";
 const stateInit = { products: [], load: false };
 export const getListProductsReducer = (stateProduct = stateInit, action) => {
   switch (action.type) {
-    // case types.GET_LIST_PRODUCTS: {
-    //   return {
-    //     ...stateProduct,
-    //     load: true,
-    //   };
-    // }
+    case types.GET_LIST_PRODUCTS: {
+      return {
+        ...stateProduct,
+        load: true,
+      };
+    }
     case types.GET_LIST_PRODUCTS_SUCCESS: {
       const { data } = action.payload;
       return {

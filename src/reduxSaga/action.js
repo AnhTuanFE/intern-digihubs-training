@@ -76,3 +76,15 @@ export const updateProductFailure = (error) => ({
   type: types.UPDATE_PRODUCT_FAILURE,
   error,
 });
+
+// set lại product
+/*
+payload({
+  name: "",
+
+})
+*/
+export const setProduct = (payload) => ({
+  type: types.SET_PRODUCT,
+  payload,
+});
