@@ -8,26 +8,28 @@ import {
   take,
   retry,
 } from "redux-saga/effects";
-import { getPostData, getProductsData, getDetailproduct } from "./postAPI";
 import {
-  getListPostSuccess,
+  getProductsData,
+  getProductById,
+  addProduct,
+  deleteProduct,
+  updateProduct,
+} from "./API";
+import {
   getListProductsSuccess,
-  getDetailProductSuccess,
+  getProductSuccess,
+  getProductFailure,
+  addProductSuccess,
+  addProductFailure,
+  deleteProductSuccess,
+  deleteProductFailure,
+  updateProductSuccess,
+  updateProductFailure,
 } from "./action";
 import * as types from "./constant";
 
 // nếu nó nhận 1 action thì nó sẽ chạy logic bên dưới
 // => WATCHER : THEO DÕI ACTION
-function* getListPostSaga() {
-  try {
-    // call Api lấy data, gán data cho action getListPostSuccess => action trả về data dưới dạng payload
-    const data = yield call(getPostData);
-    yield put(getListPostSuccess(data));
-  } catch (error) {
-    //handle error
-    throw new Error(error);
-  }
-}
 
 function* getListProductsSaga() {
   try {
@@ -39,72 +41,79 @@ function* getListProductsSaga() {
   }
 }
 
-//=========================================
-// function* getDetailProductSaga() {
-//   try {
-//     const data = yield call(getDetailproduct);
-//     yield put(getDetailProductSuccess(data));
-//   } catch (err) {
-//     throw new Error(err);
-//   }
-// }
-
 // takeLatest: với mỗi action là GET_LIST_POST nó hủy mọi tác vụ trước đó và chạy cái callback getListPostSaga
 // WORKER: THỰC HIỆN ACTION
-export function* postSaga() {
-  // yield takeLatest(types.GET_LIST_POST, getListPostSaga);
-  while (true) {
-    yield take(types.GET_LIST_POST);
-    yield fork(getListPostSaga);
-  }
-}
+
 export function* productSaga() {
   // yield takeLatest(types.GET_LIST_PRODUCTS, getListProductsSaga);
   while (true) {
     yield take(types.GET_LIST_PRODUCTS);
     yield fork(getListProductsSaga);
+    // yield take(types.GET_LIST_PRODUCTS, getListProductsSaga);
   }
 }
 
-//WORKER: nhận id từ WATCH, xử lý call api lấy id product và lưu và reducer
-function* getDetailProductSaga(idProduct) {
-  console.log("worker nhận id từ watcher", idProduct);
+//============++++++++++++++
+function* getProduct(action) {
   try {
-    // truyền id cho hàm call api getDetailproduct
-    const data = yield call(getDetailproduct(idProduct));
-    // lấy data từ api gọi đến action getDetailProductSuccess
-    // reducer nhận data và lưu vào state
-    yield put(getDetailProductSuccess(data));
-  } catch (err) {
-    throw new Error(err);
-  }
-}
-//WATCHER:
-export function* detailProductSaga() {
-  while (true) {
-    // Lắng nghe action DETAIL_PRODUCTS
-    const action = yield take(types.DETAIL_PRODUCTS);
-    // nhận id từ payload action
-    const idProduct = action.payload;
-    console.log(
-      "==> watcher saga nhận id từ action DETAIL_PRODUCTS ",
-      action.payload
-    );
-    // truyền id cho WORKER xử lý
-    yield take(getDetailProductSaga(idProduct));
+    const product = yield call(getProductById, action.id);
+    yield put(getProductSuccess(product));
+  } catch (error) {
+    yield put(getProductFailure(error));
   }
 }
 
-//==========================================
-// export function* detailProductSaga() {
-//   while (true) {
-//     const action = yield take(types.DETAIL_PRODUCTS);
-//     const idProduct = action.payload;
-//     console.log(
-//       "==> watcher saga nhận id từ action DETAIL_PRODUCTS ",
-//       idProduct
-//     );
-//     yield fork(getDetailProductSaga);
-//   }
-// }
-export default [fork(postSaga), fork(productSaga), fork(detailProductSaga)];
+export function* getIdProductSaga() {
+  yield takeLatest(types.GET_PRODUCT_REQUEST, getProduct);
+}
+//=====================================
+function* productAdd(action) {
+  try {
+    const product = yield call(addProduct, action.payload);
+    yield put(addProductSuccess(product));
+  } catch (error) {
+    yield put(addProductFailure(error));
+  }
+}
+
+export function* addProductSaga() {
+  yield takeLatest(types.ADD_PRODUCT_REQUEST, productAdd);
+}
+//-----------------------------
+function* deleteProductSa(action) {
+  try {
+    const product = yield call(deleteProduct, action.id);
+    yield put(deleteProductSuccess(product));
+  } catch (error) {
+    yield put(deleteProductFailure(error));
+  }
+}
+
+export function* deleteProductSaga() {
+  yield takeLatest(types.DELETE_PRODUCT_REQUEST, deleteProductSa);
+}
+//----------------------+++++++-------
+// const payload = { // payload action
+//   id: 0,
+//   product: {},
+// };
+function* updateProductSa(action) {
+  try {
+    const product = yield call(updateProduct, action.payload);
+    yield put(updateProductSuccess(product));
+  } catch (error) {
+    yield put(updateProductFailure(error));
+  }
+}
+
+export function* updateProductSaga() {
+  yield takeLatest(types.UPDATE_PRODUCT_REQUEST, updateProductSa);
+}
+// export default productSaga;
+export default [
+  fork(productSaga),
+  all([getIdProductSaga()]),
+  all([addProductSaga()]),
+  all([deleteProductSaga()]),
+  all([updateProductSaga()]),
+];

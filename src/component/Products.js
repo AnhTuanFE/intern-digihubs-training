@@ -2,9 +2,14 @@ import axios from "axios";
 import { Image } from "antd";
 import "./CSSComonent/Products.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getListProducts as getListProductsAction } from "../reduxSaga/action";
+import {
+  getListProducts as getListProductsAction,
+  deleteProductRequest,
+} from "../reduxSaga/action";
 import { useEffect } from "react";
 import { Button, Space } from "antd";
+import { Link } from "react-router-dom";
+import { getProductRequest } from "../reduxSaga/action";
 
 function Products() {
   const dispatch = useDispatch();
@@ -12,8 +17,9 @@ function Products() {
   const { products, load } = listProducts;
   useEffect(() => {
     dispatch(getListProductsAction());
-    console.log("data products", products);
   }, []);
+
+  //==
   const handleGetAPI = async () => {
     try {
       const config = {
@@ -51,6 +57,7 @@ function Products() {
         config
       );
       if (data) {
+        console.log("data post", data);
         alert("post data success!");
       }
     } catch (err) {
@@ -107,6 +114,10 @@ function Products() {
     image:
       "https://cdn0.fahasa.com/media/catalog/product/9/7/9786040288165.jpg",
   };
+  const handleDeleteProduct = (id) => {
+    dispatch(deleteProductRequest(id));
+  };
+
   return (
     <div>
       <div>
@@ -114,10 +125,15 @@ function Products() {
         <button onClick={handlePostAPI}>Post</button>
         <button onClick={handleDeleteAPI}>Delete</button>
         <button onClick={handleUpdateAPI}>Update</button>
+        <Space wrap>
+          <Link to="/addproduct">
+            <Button type="primary">Thêm sản phẩm mới</Button>
+          </Link>
+        </Space>
       </div>
       <div className="wrap_products">
         {products.map((item, index) => (
-          <div>
+          <Link key={index}>
             <Image
               width={200}
               src={item.image}
@@ -132,9 +148,23 @@ function Products() {
             <p>{item.name}</p>
             <p>Giá: {item.cost}</p>
             <Space wrap>
-              <Button type="primary">Xem chi tiết</Button>
+              <Link to={`/detaiproduct/${item.id}`}>
+                <Button type="primary">Xem chi tiết</Button>
+              </Link>
+              <Link to={`/updateproduct/${item.id}`}>
+                <Button type="primary">Sửa sản phẩm</Button>
+              </Link>
+
+              <Button
+                type="primary"
+                onClick={() => {
+                  handleDeleteProduct(index);
+                }}
+              >
+                Xóa sản phẩm
+              </Button>
             </Space>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

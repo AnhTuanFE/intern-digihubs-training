@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import Home from "./component/Home";
 import Products from "./component/Products";
-import GetDataFromSaga from "./component/GetDataFromSaga";
 import AddProduct from "./component/AddProduct";
 import DetailProducts from "./component/DetailProducts";
-import ManageProducts from "./component/ManageProducts";
+import UpdateProduct from "./component/UpdateProduct";
 import "./App.css";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 const { Header, Content, Footer } = Layout;
@@ -50,20 +51,16 @@ function App() {
               <Link className="nav_item" to="/addproduct">
                 Add product
               </Link>
-              <Link className="nav_item" to="/manageproducts">
-                Manage Products
-              </Link>
-              <Link className="nav_item" to="/getsaga">
-                Get Data From saga
+              <Link className="nav_item" to="/updateproduct">
+                Update Product
               </Link>
             </Menu>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/getsaga" element={<GetDataFromSaga />} />
-              <Route path="/detaiproduct" element={<DetailProducts />} />
+              <Route path="/detaiproduct/:id" element={<DetailProducts />} />
               <Route path="/addproduct" element={<AddProduct />} />
-              <Route path="/manageproducts" element={<ManageProducts />} />
+              <Route path="/updateproduct/:id" element={<UpdateProduct />} />
             </Routes>
           </Header>
         </Layout>

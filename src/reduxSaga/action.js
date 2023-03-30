@@ -1,18 +1,4 @@
 import * as types from "./constant";
-import axios from "axios";
-export const getListPost = (payload) => {
-  return {
-    type: types.GET_LIST_POST,
-    payload,
-  };
-};
-
-export const getListPostSuccess = (payload) => {
-  return {
-    type: types.GET_LIST_POST_SUCCESS,
-    payload,
-  };
-};
 
 export const getListProducts = (payload) => {
   return {
@@ -27,30 +13,66 @@ export const getListProductsSuccess = (payload) => {
     payload,
   };
 };
+//=================================================
+export const getProductRequest = (id) => ({
+  type: types.GET_PRODUCT_REQUEST,
+  id,
+});
 
-export const getDetailProduct = (payload) => {
-  // const id = payload;
-  // const config = {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // };
-  // const { data } = axios.get(
-  //   `http://localhost:3004/products/?id=${id}`,
-  //   config
-  // );
-  console.log("==> payload action get nhận", payload);
-  return {
-    type: types.DETAIL_PRODUCTS,
-    payload,
-  };
-};
-// nhận id chuyển qua reducer
-export const getDetailProductSuccess = (payload) => {
-  console.log("==> payload action success nhận", payload);
-  const product = payload.data;
-  return {
-    type: types.DETAIL_PRODUCTS_SUCCESS,
-    payload,
-  };
-};
+export const getProductSuccess = (product) => ({
+  type: types.GET_PRODUCT_SUCCESS,
+  product,
+});
+
+export const getProductFailure = (error) => ({
+  type: types.GET_PRODUCT_FAILURE,
+  error,
+});
+//==
+export const addProductRequest = (payload) => ({
+  type: types.ADD_PRODUCT_REQUEST,
+  payload,
+});
+export const addProductSuccess = (product) => ({
+  type: types.ADD_PRODUCT_SUCCESS,
+  product,
+});
+
+export const addProductFailure = (error) => ({
+  type: types.ADD_PRODUCT_FAILURE,
+  error,
+});
+
+//==
+export const deleteProductRequest = (id) => ({
+  type: types.DELETE_PRODUCT_REQUEST,
+  id,
+});
+export const deleteProductSuccess = (product) => ({
+  type: types.DELETE_PRODUCT_SUCCESS,
+  product,
+});
+
+export const deleteProductFailure = (error) => ({
+  type: types.DELETE_PRODUCT_FAILURE,
+  error,
+});
+
+//====
+// const payload = {
+//   id: 0,
+//   product: {},
+// };
+export const updateProductRequest = (payload) => ({
+  type: types.UPDATE_PRODUCT_REQUEST,
+  payload,
+});
+export const updateProductSuccess = (product) => ({
+  type: types.UPDATE_PRODUCT_SUCCESS,
+  product,
+});
+
+export const updateProductFailure = (error) => ({
+  type: types.UPDATE_PRODUCT_FAILURE,
+  error,
+});

@@ -1,35 +1,47 @@
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Button, Form, Input, InputNumber } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { addProductRequest } from "../reduxSaga/action";
-import "./CSSComonent/AddProduct.css";
+import { useParams } from "react-router-dom";
+import { getProductRequest, updateProductRequest } from "../reduxSaga/action";
 
 const { TextArea } = Input;
-function AddProduct() {
+
+const UpdateProduct = () => {
+  const idProduct = useParams();
+  const id = idProduct.id;
+  const dispatch = useDispatch();
+  const productInfor = useSelector((state) => state.productId.product);
+
   const [name, setName] = useState("");
   const [describe, setDescribe] = useState("");
   const [cost, setCost] = useState("");
   const [image, setImage] = useState("");
+  const [dataChange, setDataChange] = useState(productInfor);
 
-  const dispatch = useDispatch();
-  const product = useSelector((state) => state.productAdd.product);
-  const pro = {
-    name: name,
-    describe: describe,
-    cost: cost,
-    image: image,
+  console.log("productInfor = ", productInfor);
+  useEffect(() => {
+    dispatch(getProductRequest(id));
+  }, [id]);
+
+  const updateProduct = {
+    id: id,
+    product: {
+      name: name,
+      describe: describe,
+      cost: cost,
+      image: image,
+    },
   };
-  const hanleAddProduct = () => {
-    dispatch(addProductRequest(pro));
-    setName("");
-    setDescribe("");
-    setCost("");
-    setImage("");
+  const handleUpdate = () => {
+    dispatch(updateProductRequest(updateProduct));
   };
+  if (!productInfor) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <div className="wrapper">
-        <h4>ADD PRODUCTS</h4>
+        <h4>UPDATE PRODUCTS</h4>
         <Form
           labelCol={{
             span: 4,
@@ -44,16 +56,16 @@ function AddProduct() {
         >
           <Form.Item label="Name Product">
             <Input
-              value={name}
+              defaultValue={dataChange.name}
               onChange={(e) => {
-                setName(e.target.value);
+                setName(...e.target.value);
               }}
             />
           </Form.Item>
           <Form.Item label="Describe">
             <TextArea
               rows={4}
-              value={describe}
+              defaultValue={dataChange.describe}
               onChange={(e) => {
                 setDescribe(e.target.value);
               }}
@@ -61,7 +73,7 @@ function AddProduct() {
           </Form.Item>
           <Form.Item label="Cost">
             <InputNumber
-              value={cost}
+              defaultValue={dataChange.cost}
               onChange={(e) => {
                 setCost(e);
               }}
@@ -69,18 +81,18 @@ function AddProduct() {
           </Form.Item>
           <Form.Item label="Link Image">
             <Input
-              value={image}
+              defaultValue={dataChange.image}
               onChange={(e) => {
                 setImage(e.target.value);
               }}
             />
           </Form.Item>
           <Form.Item>
-            <Button onClick={hanleAddProduct}>Add Product</Button>
+            <Button onClick={handleUpdate}>Update Product</Button>
           </Form.Item>
         </Form>
       </div>
     </div>
   );
-}
-export default AddProduct;
+};
+export default UpdateProduct;

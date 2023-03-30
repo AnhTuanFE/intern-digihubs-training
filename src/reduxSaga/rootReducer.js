@@ -1,14 +1,18 @@
 import { combineReducers } from "redux";
 // import postsReducer from "./reducer";
 import {
-  postsReducer,
   getListProductsReducer,
-  getDetailProductsReducer,
+  productReducer,
+  addProductReducer,
+  deleteProductReducer,
+  updateProductReducer,
 } from "./reducer";
 
 const rootReducer = combineReducers({
-  posts: postsReducer,
   productsList: getListProductsReducer,
-  detailProduct: getDetailProductsReducer,
+  productId: productReducer,
+  productAdd: addProductReducer,
+  productDelete: deleteProductReducer,
+  productUpdate: updateProductReducer,
 });
 export default rootReducer;
