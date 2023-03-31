@@ -23,7 +23,7 @@ export const getListProductsReducer = (stateProduct = stateInit, action) => {
   }
 };
 
-//====== get product theo id
+//====== get product from id
 
 const initialStateP = {
   product: {},
@@ -55,11 +55,10 @@ const addProductState = {
   cost: 0,
   image: "",
 };
-// reducer nhận vào 1 object
+
 export const addProductReducer = (state = addProductState, action) => {
   switch (action.type) {
     case types.ADD_PRODUCT_SUCCESS:
-      console.log("==> action ADD_PRODUCT_SUCCESS", action.product.name);
       return {
         ...state,
         name: action.product.name,
@@ -68,7 +67,6 @@ export const addProductReducer = (state = addProductState, action) => {
         image: action.product.image,
       };
     case types.ADD_PRODUCT_FAILURE:
-      console.log("==> action ADD_PRODUCT_FAILURE", action);
       return {
         ...state,
         name: null,
@@ -81,7 +79,6 @@ export const addProductReducer = (state = addProductState, action) => {
   }
 };
 
-// xóa
 const initialStateDelete = {
   product: null,
   error: null,
@@ -105,7 +102,7 @@ export const deleteProductReducer = (state = initialStateDelete, action) => {
       return state;
   }
 };
-//== SỬA
+
 const initialStateUpdate = {
   id: 0,
   product: {},

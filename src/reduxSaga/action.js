@@ -13,7 +13,7 @@ export const getListProductsSuccess = (payload) => {
     payload,
   };
 };
-//=================================================
+//=
 export const getProductRequest = (id) => ({
   type: types.GET_PRODUCT_REQUEST,
   id,

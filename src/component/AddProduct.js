@@ -21,6 +21,7 @@ function AddProduct() {
   };
   const hanleAddProduct = () => {
     dispatch(addProductRequest(pro));
+    alert("Thêm sản phẩm thành công");
     setName("");
     setDescribe("");
     setCost("");
@@ -76,7 +77,9 @@ function AddProduct() {
             />
           </Form.Item>
           <Form.Item>
-            <Button onClick={hanleAddProduct}>Add Product</Button>
+            <Button type="primary" onClick={hanleAddProduct}>
+              Add Product
+            </Button>
           </Form.Item>
         </Form>
       </div>

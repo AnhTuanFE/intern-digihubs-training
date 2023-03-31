@@ -6,7 +6,6 @@ import {
   fork,
   all,
   take,
-  retry,
 } from "redux-saga/effects";
 import {
   getProductsData,
@@ -28,12 +27,8 @@ import {
 } from "./action";
 import * as types from "./constant";
 
-// nếu nó nhận 1 action thì nó sẽ chạy logic bên dưới
-// => WATCHER : THEO DÕI ACTION
-
-function* getListProductsSaga() {
+function* getListProducts() {
   try {
-    // data từ api
     const data = yield call(getProductsData);
     yield put(getListProductsSuccess(data));
   } catch (err) {
@@ -41,19 +36,15 @@ function* getListProductsSaga() {
   }
 }
 
-// takeLatest: với mỗi action là GET_LIST_POST nó hủy mọi tác vụ trước đó và chạy cái callback getListPostSaga
-// WORKER: THỰC HIỆN ACTION
-
-export function* productSaga() {
-  // yield takeLatest(types.GET_LIST_PRODUCTS, getListProductsSaga);
+export function* getListProductsSaga() {
+  // yield takeLatest(types.GET_LIST_PRODUCTS, getListProducts);
   while (true) {
     yield take(types.GET_LIST_PRODUCTS);
-    yield fork(getListProductsSaga);
-    // yield take(types.GET_LIST_PRODUCTS, getListProductsSaga);
+    yield fork(getListProducts);
   }
 }
 
-//============++++++++++++++
+//
 function* getProduct(action) {
   try {
     const product = yield call(getProductById, action.id);
@@ -66,7 +57,7 @@ function* getProduct(action) {
 export function* getIdProductSaga() {
   yield takeLatest(types.GET_PRODUCT_REQUEST, getProduct);
 }
-//=====================================
+//
 function* productAdd(action) {
   try {
     const product = yield call(addProduct, action.payload);
@@ -79,7 +70,7 @@ function* productAdd(action) {
 export function* addProductSaga() {
   yield takeLatest(types.ADD_PRODUCT_REQUEST, productAdd);
 }
-//-----------------------------
+//
 function* deleteProductSa(action) {
   try {
     const product = yield call(deleteProduct, action.id);
@@ -109,9 +100,9 @@ function* updateProductSa(action) {
 export function* updateProductSaga() {
   yield takeLatest(types.UPDATE_PRODUCT_REQUEST, updateProductSa);
 }
-// export default productSaga;
+//
 export default [
-  fork(productSaga),
+  fork(getListProductsSaga),
   all([getIdProductSaga()]),
   all([addProductSaga()]),
   all([deleteProductSaga()]),

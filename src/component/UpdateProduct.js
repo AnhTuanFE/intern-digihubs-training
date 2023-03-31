@@ -11,19 +11,22 @@ const UpdateProduct = () => {
   const id = idProduct.id;
   const dispatch = useDispatch();
   const productInfor = useSelector((state) => state.productId.product);
-  const { name, describe, cost, image } = productInfor;
+  // const { name, describe, cost, image } = productInfor;
 
   const [name1, setName] = useState("");
   const [describe1, setDescribe] = useState("");
   const [cost1, setCost] = useState("");
   const [image1, setImage] = useState("");
-  // const [dataChange, setDataChange] = useState(productInfor);
 
-  console.log("productInfor = ", productInfor);
   useEffect(() => {
     dispatch(getProductRequest(id));
   }, [id]);
-
+  useEffect(() => {
+    setName(productInfor.name);
+    setDescribe(productInfor.describe);
+    setCost(productInfor.cost);
+    setImage(productInfor.image);
+  });
   const updateProduct = {
     id: id,
     product: {
@@ -35,6 +38,7 @@ const UpdateProduct = () => {
   };
   const handleUpdate = () => {
     dispatch(updateProductRequest(updateProduct));
+    alert("Cập nhật sản phẩm thành công");
   };
   if (!productInfor) {
     return <div>Loading...</div>;
@@ -57,7 +61,7 @@ const UpdateProduct = () => {
         >
           <Form.Item label="Name Product">
             <Input
-              value={productInfor.name}
+              value={name1}
               onChange={(e) => {
                 productInfor.name = e.target.value;
                 setName(productInfor.name);
@@ -67,7 +71,7 @@ const UpdateProduct = () => {
           <Form.Item label="Describe">
             <TextArea
               rows={4}
-              value={productInfor.describe}
+              value={describe1}
               onChange={(e) => {
                 productInfor.describe = e.target.value;
                 setDescribe(e.target.value);
@@ -76,7 +80,7 @@ const UpdateProduct = () => {
           </Form.Item>
           <Form.Item label="Cost">
             <InputNumber
-              value={productInfor.cost}
+              value={cost1}
               onChange={(e) => {
                 productInfor.cost = e;
                 setCost(e);
@@ -85,7 +89,7 @@ const UpdateProduct = () => {
           </Form.Item>
           <Form.Item label="Link Image">
             <Input
-              value={productInfor.image}
+              value={image1}
               onChange={(e) => {
                 productInfor.image = e.target.value;
                 setImage(e.target.value);
@@ -93,7 +97,9 @@ const UpdateProduct = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button onClick={handleUpdate}>Update Product</Button>
+            <Button type="primary" onClick={handleUpdate}>
+              Update Product
+            </Button>
           </Form.Item>
         </Form>
       </div>

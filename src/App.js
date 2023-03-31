@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import Home from "./component/Home";
 import Products from "./component/Products";
 import AddProduct from "./component/AddProduct";
@@ -34,26 +32,22 @@ function App() {
                 background: "rgba(255, 255, 255, 0.2)",
               }}
             ></div>
-            <Menu
-              // theme="light"
-              mode="horizontal"
-              // defaultSelectedKeys={["2"]}
-            >
+            <Menu mode="horizontal">
               <Link className="nav_item" to="/">
                 Home
               </Link>
               <Link className="nav_item" to="/products">
                 Products
               </Link>
-              <Link className="nav_item" to="/detaiproduct">
-                Detai product
-              </Link>
               <Link className="nav_item" to="/addproduct">
                 Add product
               </Link>
+              {/* <Link className="nav_item" to="/detaiproduct">
+                Detai product
+              </Link>
               <Link className="nav_item" to="/updateproduct">
                 Update Product
-              </Link>
+              </Link> */}
             </Menu>
             <Routes>
               <Route path="/" element={<Home />} />

@@ -1,39 +1,5 @@
 {
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment 1",
-      "name": "a"
-    },
-    {
-      "body": "some comment update",
-      "name": "update name",
-      "id": 2
-    },
-    {
-      "id": 3,
-      "body": "some comment 3",
-      "name": "c"
-    },
-    {
-      "id": 4,
-      "body": "some comment 3",
-      "name": "d"
-    },
-    {
-      "body": "some comment 5",
-      "postId": 5,
-      "id": 5
-    }
-  ],
   "products": [
-    {
-      "id": 1,
-      "name": "Tiếng Việt 1/2 (Chân Trời Sáng Tạo)",
-      "describe": "Sách giáo khoa cho trẻ, chương trình chính quy",
-      "cost": 31000,
-      "image": "https://cdn0.fahasa.com/media/catalog/product/9/7/9786040288165.jpg"
-    },
     {
       "id": 2,
       "name": "Thánh Thạch Rave Tập 3",
@@ -49,13 +15,6 @@
       "image": "https://cdn0.fahasa.com/media/catalog/product/8/9/8936038723180.jpg"
     },
     {
-      "name": "Người Lạ Dưới Gió Xuân - Tập 2",
-      "describe": "Shun, tiểu thuyết gia trẻ tuổi, đã dẫn người mình thương - Mio, trở lại quê nhà sau nhiều năm bặt vô âm tín. đã sửa",
-      "cost": 107000,
-      "image": "https://cdn0.fahasa.com/media/catalog/product/n/l/nldgx2_1.jpg",
-      "id": 4
-    },
-    {
       "id": 5,
       "name": "Người Lạ Dưới Gió Xuân - Tập 2",
       "describe": "Shun, tiểu thuyết gia trẻ tuổi, đã dẫn người mình thương - Mio, trở lại quê nhà sau nhiều năm bặt vô âm tín.",
@@ -63,9 +22,9 @@
       "image": "https://cdn0.fahasa.com/media/catalog/product/n/l/nldgx2_1.jpg"
     },
     {
-      "name": "Sách hay",
-      "describe": "mô tả",
-      "cost": 113,
+      "name": "Sách hay sửa nek",
+      "describe": "Sách hay",
+      "cost": 119,
       "image": "https://cdn0.fahasa.com/media/catalog/product/9/7/9786040288165.jpg",
       "id": 6
     }
