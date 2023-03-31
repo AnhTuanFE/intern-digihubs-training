@@ -1,9 +1,14 @@
-import { Button, Form, Input, InputNumber } from "antd";
+import { Button, Form, Input, Checkbox, InputNumber } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { addProductRequest } from "../reduxSaga/action";
-import "./CSSComonent/AddProduct.css";
-
+import "./CSSComonent/Product.css";
+const onFinish = (values) => {
+  console.log("Success:", values);
+};
+const onFinishFailed = (errorInfo) => {
+  console.log("Failed:", errorInfo);
+};
 const { TextArea } = Input;
 function AddProduct() {
   const [name, setName] = useState("");
@@ -30,7 +35,6 @@ function AddProduct() {
   return (
     <div>
       <div className="wrapper">
-        <h4>ADD PRODUCTS</h4>
         <Form
           labelCol={{
             span: 4,
@@ -39,10 +43,9 @@ function AddProduct() {
             span: 14,
           }}
           layout="horizontal"
-          style={{
-            maxWidth: 600,
-          }}
+          className="form"
         >
+          <h1>ADD PRODUCT</h1>
           <Form.Item label="Name Product">
             <Input
               value={name}
@@ -61,10 +64,10 @@ function AddProduct() {
             />
           </Form.Item>
           <Form.Item label="Cost">
-            <InputNumber
+            <Input
               value={cost}
               onChange={(e) => {
-                setCost(e);
+                setCost(e.target.value);
               }}
             />
           </Form.Item>

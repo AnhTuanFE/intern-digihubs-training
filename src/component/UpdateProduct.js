@@ -3,7 +3,7 @@ import { Button, Form, Input, InputNumber } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductRequest, updateProductRequest } from "../reduxSaga/action";
-
+import "./CSSComonent/Product.css";
 const { TextArea } = Input;
 
 const UpdateProduct = () => {
@@ -46,7 +46,6 @@ const UpdateProduct = () => {
   return (
     <div>
       <div className="wrapper">
-        <h4>UPDATE PRODUCTS</h4>
         <Form
           labelCol={{
             span: 4,
@@ -55,10 +54,9 @@ const UpdateProduct = () => {
             span: 14,
           }}
           layout="horizontal"
-          style={{
-            maxWidth: 600,
-          }}
+          className="form"
         >
+          <h4>UPDATE PRODUCTS</h4>
           <Form.Item label="Name Product">
             <Input
               value={name1}
@@ -79,11 +77,11 @@ const UpdateProduct = () => {
             />
           </Form.Item>
           <Form.Item label="Cost">
-            <InputNumber
+            <Input
               value={cost1}
               onChange={(e) => {
-                productInfor.cost = e;
-                setCost(e);
+                productInfor.cost = e.target.value;
+                setCost(e.target.value);
               }}
             />
           </Form.Item>
