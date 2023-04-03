@@ -1,11 +1,11 @@
 {
   "products": [
     {
-      "id": 2,
       "name": "Thánh Thạch Rave Tập 3",
       "describe": "Top 100 sản phẩm Manga Khác bán chạy của tháng",
       "cost": 27000,
-      "image": "https://cdn0.fahasa.com/media/catalog/product/t/h/thanh-thach-rave---tap-3.jpg"
+      "image": "https://cdn0.fahasa.com/media/catalog/product/t/h/thanh-thach-rave---tap-3.jpg",
+      "id": 2
     },
     {
       "id": 3,

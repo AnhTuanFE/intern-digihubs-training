@@ -5,3 +5,9 @@ p {
   display: flex;
   justify-content: space-around;
 }
+.title_products {
+  font-size: 20px !important;
+}
+.gutter_row {
+  padding-top: 12px;
+}
