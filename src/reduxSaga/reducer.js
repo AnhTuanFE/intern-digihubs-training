@@ -125,3 +125,23 @@ export const updateProductReducer = (state = initialStateUpdate, action) => {
       return state;
   }
 };
+// test reducer
+export const testGetProductReducer = (state = { product: [] }, action) => {
+  switch (action.type) {
+    case types.TEST_GET_LIST_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        product: action.payload,
+      };
+    }
+    case types.TEST_GET_LIST_PRODUCT_FAILURE: {
+      return {
+        ...state,
+        product: null,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};

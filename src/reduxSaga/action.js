@@ -77,14 +77,21 @@ export const updateProductFailure = (error) => ({
   error,
 });
 
-// set lại product
-/*
-payload({
-  name: "",
-
-})
-*/
-export const setProduct = (payload) => ({
-  type: types.SET_PRODUCT,
+// truyền vào id rồi lấy sp theo id đó, nếu lấy được thì nó nhận vào cái object/array mà
+// API trả về. lấy cái object/array trả về luôn
+// TEST SAGA
+export const testGetProductRequest = (payload) => ({
+  type: types.TEST_GET_LIST_PRODUCT_REQUEST,
   payload,
+});
+// lúc này cái payload này là cái object/array do api trả về
+export const testGetProductSuccess = (payload) => ({
+  type: types.TEST_GET_LIST_PRODUCT_SUCCESS,
+  payload,
+});
+
+// nếu không lấy được data từ api nó sẽ trả về lỗi error cho action này
+export const testGetProductFailure = (error) => ({
+  type: types.TEST_GET_LIST_PRODUCT_FAILURE,
+  error,
 });
