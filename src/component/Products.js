@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getListProducts as getListProductsAction,
   deleteProductRequest,
-} from "../reduxSaga/action";
+} from "../reduxSaga/actions/action";
 import { useEffect, useState } from "react";
 import { Button, Space } from "antd";
 import { Link } from "react-router-dom";

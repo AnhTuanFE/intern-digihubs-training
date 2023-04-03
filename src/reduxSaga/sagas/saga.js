@@ -14,7 +14,7 @@ import {
   deleteProduct,
   updateProduct,
   testGetDataProduct,
-} from "./API";
+} from "../apis/API";
 import {
   getListProductsSuccess,
   getProductSuccess,
@@ -27,8 +27,8 @@ import {
   updateProductFailure,
   testGetProductSuccess,
   testGetProductFailure,
-} from "./action";
-import * as types from "./constant";
+} from "../actions/action";
+import * as types from "../constants/constant";
 
 function* getListProducts() {
   try {

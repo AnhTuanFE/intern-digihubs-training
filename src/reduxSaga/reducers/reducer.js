@@ -1,4 +1,4 @@
-import * as types from "./constant";
+import * as types from "../constants/constant";
 
 const stateInit = { products: [], load: false };
 export const getListProductsReducer = (stateProduct = stateInit, action) => {

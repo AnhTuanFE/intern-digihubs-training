@@ -2,7 +2,10 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { Button, Form, Input, InputNumber } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProductRequest, updateProductRequest } from "../reduxSaga/action";
+import {
+  getProductRequest,
+  updateProductRequest,
+} from "../reduxSaga/actions/action";
 import "./CSSComonent/Product.css";
 const { TextArea } = Input;
 

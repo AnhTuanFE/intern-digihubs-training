@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { testGetProductRequest as testGetProductRequestAction } from "../reduxSaga/action";
-import BaseURL from "../reduxSaga/baseURL";
+import { testGetProductRequest as testGetProductRequestAction } from "../reduxSaga/actions/action";
+import BaseURL from "../reduxSaga/apis/baseURL";
 
 const Home = () => {
   const baseUrl = BaseURL.baseURL;

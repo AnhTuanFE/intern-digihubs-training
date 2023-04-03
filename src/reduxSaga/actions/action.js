@@ -1,4 +1,4 @@
-import * as types from "./constant";
+import * as types from "../constants/constant";
 
 export const getListProducts = (payload) => {
   return {

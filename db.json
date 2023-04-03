@@ -22,18 +22,18 @@
       "id": 4
     },
     {
-      "id": 5,
-      "name": "Người Lạ Dưới Gió Xuân - Tập 2",
-      "describe": "Shun, tiểu thuyết gia trẻ tuổi, đã dẫn người mình thương - Mio, trở lại quê nhà sau nhiều năm bặt vô âm tín.",
-      "cost": 107000,
-      "image": "https://cdn0.fahasa.com/media/catalog/product/n/l/nldgx2_1.jpg"
-    },
-    {
-      "name": "Sách hay sửa nek",
-      "describe": "Sách hay",
-      "cost": 119,
+      "name": "Tiếng việt tập 2",
+      "describe": "Sách giáo dục",
+      "cost": "35000",
       "image": "https://cdn0.fahasa.com/media/catalog/product/9/7/9786040288165.jpg",
       "id": 6
+    },
+    {
+      "name": "Thánh Thạch Rave Tập 2",
+      "describe": "Top 100 sản phẩm Manga Khác bán chạy của tháng",
+      "cost": "30000",
+      "image": "https://cdn0.fahasa.com/media/catalog/product/t/h/thanh-thach-rave---tap-2.jpg",
+      "id": 7
     }
   ]
 }
