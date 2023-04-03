@@ -1,12 +1,4 @@
-import {
-  call,
-  put,
-  takeLatest,
-  takeEvery,
-  fork,
-  all,
-  take,
-} from "redux-saga/effects";
+import { call, put, takeLatest, fork, all, take } from "redux-saga/effects"; // takeEvery,
 import {
   getProductsData,
   getProductById,

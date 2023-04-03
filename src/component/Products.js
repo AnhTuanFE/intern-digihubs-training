@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { Button, Space } from "antd";
 import { Link } from "react-router-dom";
+import "./CSSComonent/Products.css";
 
 function Products() {
   const [checkRender, setCheckRender] = useState(false);

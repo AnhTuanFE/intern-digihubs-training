@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getProductRequest } from "../reduxSaga/actions/action";
-import { useEffect, useState } from "react";
+import { useEffect } from "react"; //, useState
 import { useParams } from "react-router-dom";
 import { Image } from "antd";
 import "./CSSComonent/Product.css";
@@ -8,12 +8,10 @@ import "./CSSComonent/Product.css";
 function DetailProducts() {
   const idProduct = useParams();
   const id = idProduct.id;
-  // console.log("productId", idProduct.id);
   const dispatch = useDispatch();
   const detailProduct = useSelector((state) => state.productId.product);
   useEffect(() => {
     dispatch(getProductRequest(id));
-    // console.log("==> detailProduct", detailProduct);
   }, [id]);
 
   if (!detailProduct) {

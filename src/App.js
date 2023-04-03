@@ -5,17 +5,15 @@ import AddProduct from "./component/AddProduct";
 import DetailProducts from "./component/DetailProducts";
 import UpdateProduct from "./component/UpdateProduct";
 import "./App.css";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 const { Header, Content, Footer } = Layout;
 function App() {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   return (
     <div>
       <Router>
         <Layout>
           <Header
+            className="header"
             style={{
               position: "sticky",
               top: 0,
@@ -32,22 +30,26 @@ function App() {
                 background: "rgba(255, 255, 255, 0.2)",
               }}
             ></div>
-            <Menu mode="horizontal">
-              <Link className="nav_item" to="/">
-                Home
-              </Link>
-              <Link className="nav_item" to="/products">
-                Products
-              </Link>
-              <Link className="nav_item" to="/addproduct">
-                Add product
-              </Link>
-              {/* <Link className="nav_item" to="/detaiproduct">
-                Detai product
-              </Link>
-              <Link className="nav_item" to="/updateproduct">
-                Update Product
-              </Link> */}
+            <Menu
+              mode="horizontal"
+              defaultSelectedKeys={["1"]}
+              text-color="white"
+            >
+              <Menu.Item key="home">
+                <Link className="nav_item" to="/">
+                  Home
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="product">
+                <Link className="nav_item" to="/products">
+                  Products
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="addProduct">
+                <Link className="nav_item" to="/addproduct">
+                  Add product
+                </Link>
+              </Menu.Item>
             </Menu>
             <Routes>
               <Route path="/" element={<Home />} />

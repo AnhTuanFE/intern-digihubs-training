@@ -1,16 +1,10 @@
-import { Button, Form, Input, Checkbox, InputNumber } from "antd";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { Button, Form, Input } from "antd"; //, Checkbox, InputNumber
+import { useDispatch } from "react-redux"; //useSelector,
+import { useState } from "react";
 import { addProductRequest } from "../reduxSaga/actions/action";
 
 import "./CSSComonent/Product.css";
 
-// const onFinish = (values) => {
-//   console.log("Success:", values);
-// };
-// const onFinishFailed = (errorInfo) => {
-//   console.log("Failed:", errorInfo);
-// };
 const { TextArea } = Input;
 function AddProduct() {
   const [name, setName] = useState("");
@@ -19,7 +13,7 @@ function AddProduct() {
   const [image, setImage] = useState("");
 
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.productAdd.product);
+  // const product = useSelector((state) => state.productAdd.product);
   const pro = {
     name: name,
     describe: describe,
