@@ -13,7 +13,7 @@ export const getListProductsSuccess = (payload) => {
     payload,
   };
 };
-//=
+
 export const getProductRequest = (id) => ({
   type: types.GET_PRODUCT_REQUEST,
   id,
@@ -28,7 +28,7 @@ export const getProductFailure = (error) => ({
   type: types.GET_PRODUCT_FAILURE,
   error,
 });
-//==
+
 export const addProductRequest = (payload) => ({
   type: types.ADD_PRODUCT_REQUEST,
   payload,
@@ -43,7 +43,6 @@ export const addProductFailure = (error) => ({
   error,
 });
 
-//==
 export const deleteProductRequest = (id) => ({
   type: types.DELETE_PRODUCT_REQUEST,
   id,
@@ -58,11 +57,6 @@ export const deleteProductFailure = (error) => ({
   error,
 });
 
-//====
-// const payload = {
-//   id: 0,
-//   product: {},
-// };
 export const updateProductRequest = (payload) => ({
   type: types.UPDATE_PRODUCT_REQUEST,
   payload,

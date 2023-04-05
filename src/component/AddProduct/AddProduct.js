@@ -1,9 +1,9 @@
 import { Button, Form, Input } from "antd"; //, Checkbox, InputNumber
 import { useDispatch } from "react-redux"; //useSelector,
 import { useState } from "react";
-import { addProductRequest } from "../reduxSaga/actions/action";
+import { addProductRequest } from "../../reduxSaga/actions/action";
 
-import "./CSSComonent/Product.css";
+import "./AddProduct.css";
 
 const { TextArea } = Input;
 function AddProduct() {

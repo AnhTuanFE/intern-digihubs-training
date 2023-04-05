@@ -1,12 +1,12 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import { Button, Form, Input, InputNumber } from "antd";
+import { useState, useEffect } from "react";
+import { Button, Form, Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   getProductRequest,
   updateProductRequest,
-} from "../reduxSaga/actions/action";
-import "./CSSComonent/Product.css";
+} from "../../reduxSaga/actions/action";
+import "./UpdateProduct.css";
 const { TextArea } = Input;
 
 const UpdateProduct = () => {
@@ -14,7 +14,6 @@ const UpdateProduct = () => {
   const id = idProduct.id;
   const dispatch = useDispatch();
   const productInfor = useSelector((state) => state.productId.product);
-  // const { name, describe, cost, image } = productInfor;
 
   const [name1, setName] = useState("");
   const [describe1, setDescribe] = useState("");
@@ -24,6 +23,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     dispatch(getProductRequest(id));
   }, [id]);
+
   useEffect(() => {
     setName(productInfor.name);
     setDescribe(productInfor.describe);

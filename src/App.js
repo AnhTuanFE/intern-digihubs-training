@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./component/Home";
-import Products from "./component/Products";
 import AddProduct from "./component/AddProduct";
 import DetailProducts from "./component/DetailProducts";
 import UpdateProduct from "./component/UpdateProduct";
+import Products from "./component/Products";
 import "./App.css";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
 const { Header } = Layout;
 function App() {
   return (

@@ -48,7 +48,7 @@ export const productReducer = (state = initialStateP, action) => {
       return state;
   }
 };
-//===
+
 const addProductState = {
   name: "",
   describe: "",
@@ -125,7 +125,7 @@ export const updateProductReducer = (state = initialStateUpdate, action) => {
       return state;
   }
 };
-// test reducer
+
 export const testGetProductReducer = (state = { product: [] }, action) => {
   switch (action.type) {
     case types.TEST_GET_LIST_PRODUCT_SUCCESS: {

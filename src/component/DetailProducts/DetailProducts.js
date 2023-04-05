@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getProductRequest } from "../reduxSaga/actions/action";
+import { getProductRequest } from "../../reduxSaga/actions/action";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Image } from "antd";
-import "./CSSComonent/Product.css";
+import "./DetailProducts.css";
 
 function DetailProducts() {
   const idProduct = useParams();

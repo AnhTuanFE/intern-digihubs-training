@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getListProducts as getListProductsAction,
   deleteProductRequest,
-} from "../reduxSaga/actions/action";
+} from "../../reduxSaga/actions/action";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
-import styles from "./CSSComonent/Products.module.css";
+import styles from "./Products.module.css";
 
 const { Content } = Layout;
 
