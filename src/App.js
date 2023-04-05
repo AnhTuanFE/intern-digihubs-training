@@ -6,7 +6,7 @@ import DetailProducts from "./component/DetailProducts";
 import UpdateProduct from "./component/UpdateProduct";
 import "./App.css";
 import { Layout, Menu, theme } from "antd";
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 function App() {
   return (
     <div>

@@ -1,7 +1,5 @@
 # Getting Started with Create React App
 
-json-server --watch db.json --port 3004
-
 ## Available Scripts
 
 In the project directory, you can run:

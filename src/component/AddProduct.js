@@ -13,7 +13,6 @@ function AddProduct() {
   const [image, setImage] = useState("");
 
   const dispatch = useDispatch();
-  // const product = useSelector((state) => state.productAdd.product);
   const pro = {
     name: name,
     describe: describe,

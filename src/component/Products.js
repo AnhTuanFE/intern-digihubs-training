@@ -1,14 +1,11 @@
-import { Image } from "antd";
+import { Button, Space, Layout, Col, Divider, Row, Image } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getListProducts as getListProductsAction,
   deleteProductRequest,
 } from "../reduxSaga/actions/action";
 import { useEffect, useState } from "react";
-import { Button, Space, Layout } from "antd";
-import { Col, Divider, Row } from "antd";
 import { Link } from "react-router-dom";
-// ====
 import clsx from "clsx";
 import styles from "./CSSComonent/Products.module.css";
 
