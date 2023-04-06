@@ -1,12 +1,20 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import PrivateRoute from "./routes/PrivateRoute";
 import Home from "./component/Home";
 import AddProduct from "./component/AddProduct";
 import DetailProducts from "./component/DetailProducts";
 import UpdateProduct from "./component/UpdateProduct";
-import Products from "./component/Products";
-import "./App.css";
+import Login from "./component/Login/Login";
+import User from "./component/User";
 import { Layout, Menu } from "antd";
+
+import AccountInformation from "./component/AccountInformation";
+import "./App.css";
+
+const LazyProducts = React.lazy(() => import("./component/Products"));
 const { Header } = Layout;
+
 function App() {
   return (
     <div>
@@ -50,13 +58,30 @@ function App() {
                   Add product
                 </Link>
               </Menu.Item>
+              <Menu.Item key="user">
+                <User />
+              </Menu.Item>
             </Menu>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products />} />
+              <Route
+                path="/products"
+                element={
+                  <React.Suspense fallback={<div>Loading products...</div>}>
+                    <LazyProducts />
+                  </React.Suspense>
+                }
+              />
               <Route path="/detaiproduct/:id" element={<DetailProducts />} />
               <Route path="/addproduct" element={<AddProduct />} />
               <Route path="/updateproduct/:id" element={<UpdateProduct />} />
+              <Route path="/login" element={<Login />} />
+              <Route element={<PrivateRoute />}>
+                <Route
+                  path="/accountinformation"
+                  element={<AccountInformation />}
+                />
+              </Route>
             </Routes>
           </Header>
         </Layout>

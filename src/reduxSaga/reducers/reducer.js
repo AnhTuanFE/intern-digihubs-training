@@ -145,3 +145,28 @@ export const testGetProductReducer = (state = { product: [] }, action) => {
     }
   }
 };
+
+export const loginReducer = (
+  state = { checkLogin: false, userInfo: {} },
+  action
+) => {
+  switch (action.type) {
+    case types.LOGIN: {
+      return {
+        ...state,
+        checkLogin: true,
+        userInfo: action.payload,
+      };
+    }
+    case types.LOGOUT: {
+      return {
+        ...state,
+        checkLogin: false,
+        userInfo: {},
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};

@@ -6,6 +6,7 @@ import {
   deleteProductReducer,
   updateProductReducer,
   testGetProductReducer,
+  loginReducer,
 } from "./reducer";
 
 const rootReducer = combineReducers({
@@ -15,5 +16,6 @@ const rootReducer = combineReducers({
   productDelete: deleteProductReducer,
   productUpdate: updateProductReducer,
   dataTestProduct: testGetProductReducer,
+  dataLogin: loginReducer,
 });
 export default rootReducer;

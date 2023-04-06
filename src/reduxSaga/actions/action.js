@@ -89,3 +89,16 @@ export const testGetProductFailure = (error) => ({
   type: types.TEST_GET_LIST_PRODUCT_FAILURE,
   error,
 });
+
+export const loginAction = (payload) => {
+  return {
+    type: types.LOGIN,
+    payload,
+  };
+};
+
+export const logoutAction = () => {
+  return {
+    type: types.LOGOUT,
+  };
+};
