@@ -7,18 +7,21 @@
 .wrap_form {
   width: 33%;
   padding: 4% 5%;
-  border: 1.8px solid #e4e4e4;
-}
-.title {
+  box-shadow: 0 1px 11px rgba(168, 168, 168, 0.27);
   text-align: center;
-  line-height: initial;
+}
+.input_item {
+  font-weight: 500;
 }
 .wrap_button {
   text-align: center;
+  border-radius: 5px;
 }
 .button_login {
   margin-right: 10px;
-}
-.button_logout {
-  margin-left: 10px;
+  text-transform: uppercase;
+  color: white;
+  background-color: #1677ff;
+  font-weight: 500;
+  padding: 0 30px;
 }

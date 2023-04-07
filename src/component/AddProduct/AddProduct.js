@@ -2,8 +2,8 @@ import { Button, Form, Input } from "antd"; //, Checkbox, InputNumber
 import { useDispatch } from "react-redux"; //useSelector,
 import { useState } from "react";
 import { addProductRequest } from "../../reduxSaga/actions/action";
-
-import "./AddProduct.css";
+import clsx from "clsx";
+import styles from "./AddProduct.module.css";
 
 const { TextArea } = Input;
 function AddProduct() {
@@ -29,7 +29,7 @@ function AddProduct() {
   };
   return (
     <div>
-      <div className="wrapper">
+      <div className={clsx(styles.wrapper)}>
         <Form
           labelCol={{
             span: 4,
@@ -38,9 +38,9 @@ function AddProduct() {
             span: 14,
           }}
           layout="horizontal"
-          className="form"
+          className={clsx(styles.form)}
         >
-          <h1>ADD PRODUCT</h1>
+          <h1 className={clsx(styles.title)}>ADD PRODUCT</h1>
           <Form.Item label="Name Product">
             <Input
               value={name}
@@ -75,7 +75,11 @@ function AddProduct() {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" onClick={hanleAddProduct}>
+            <Button
+              type="primary"
+              onClick={hanleAddProduct}
+              className={clsx(styles.button_add)}
+            >
               Add Product
             </Button>
           </Form.Item>

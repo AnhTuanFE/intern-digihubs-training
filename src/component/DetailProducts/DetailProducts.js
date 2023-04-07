@@ -3,7 +3,8 @@ import { getProductRequest } from "../../reduxSaga/actions/action";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Image } from "antd";
-import "./DetailProducts.css";
+import clsx from "clsx";
+import styles from "./DetailProducts.module.css";
 
 function DetailProducts() {
   const idProduct = useParams();
@@ -18,8 +19,8 @@ function DetailProducts() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="wrapper">
-      <div className="wrap_content">
+    <div className={clsx(styles.wrapper)}>
+      <div className={clsx(styles.wrap_content)}>
         <h1>DETAIL PRODUCT</h1>
         <Image
           width={200}

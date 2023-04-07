@@ -8,8 +8,7 @@ import UpdateProduct from "./component/UpdateProduct";
 import Login from "./component/Login/Login";
 import User from "./component/User";
 import { Layout, Menu } from "antd";
-import { LoadingPosts } from "./component/Products/lazy/LoadingPosts";
-import Posts from "./component/Products/lazy/Posts";
+import Posts from "./component/LazyLoadImages/Posts";
 import AccountInformation from "./component/AccountInformation";
 import "./App.css";
 
@@ -39,22 +38,22 @@ function App() {
             >
               <Menu.Item key="home">
                 <Link className="nav_item" to="/">
-                  Home
+                  HOME
                 </Link>
               </Menu.Item>
               <Menu.Item key="product">
                 <Link className="nav_item" to="/products">
-                  Products
+                  PRODUCTS
                 </Link>
               </Menu.Item>
               <Menu.Item key="addProduct">
                 <Link className="nav_item" to="/addproduct">
-                  Add product
+                  ADD PRODUCT
                 </Link>
               </Menu.Item>
               <Menu.Item key="imagePost">
                 <Link className="nav_item" to="/imagepost">
-                  image Post
+                  LIST IMAGE
                 </Link>
               </Menu.Item>
               <Menu.Item

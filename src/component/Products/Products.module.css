@@ -11,3 +11,7 @@ p {
 .gutter_row {
   padding-top: 12px;
 }
+.use_button {
+  background-color: #1677ff;
+  /* font-weight: 500; */
+}

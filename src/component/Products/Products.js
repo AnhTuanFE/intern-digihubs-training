@@ -22,8 +22,6 @@ const contentStyle = {
   color: "#fff",
   // border: "1px solid #000",
 };
-const NUM_PER_PAGE = 6;
-const TOTAL_PAGES = 3;
 
 function Products() {
   const [checkRender, setCheckRender] = useState(false);
@@ -40,8 +38,6 @@ function Products() {
       setCheckRender(!checkRender);
     }
   };
-
-  //=========
   return (
     <div>
       <div>
@@ -85,10 +81,20 @@ function Products() {
                     <p>Giá: {item.cost}</p>
                     <Space wrap>
                       <Link to={`/detaiproduct/${item.id}`}>
-                        <Button type="primary">Chi tiết SP</Button>
+                        <Button
+                          type="primary"
+                          className={clsx(styles.use_button)}
+                        >
+                          Chi tiết SP
+                        </Button>
                       </Link>
                       <Link to={`/updateproduct/${item.id}`}>
-                        <Button type="primary">Sửa SP</Button>
+                        <Button
+                          type="primary"
+                          className={clsx(styles.use_button)}
+                        >
+                          Sửa SP
+                        </Button>
                       </Link>
 
                       <Button
@@ -96,6 +102,7 @@ function Products() {
                         onClick={() => {
                           handleDeleteProduct(item.id);
                         }}
+                        className={clsx(styles.use_button)}
                       >
                         Xóa SP
                       </Button>

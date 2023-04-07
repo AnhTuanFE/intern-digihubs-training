@@ -6,7 +6,8 @@ import {
   getProductRequest,
   updateProductRequest,
 } from "../../reduxSaga/actions/action";
-import "./UpdateProduct.css";
+import clsx from "clsx";
+import styles from "./UpdateProduct.module.css";
 const { TextArea } = Input;
 
 const UpdateProduct = () => {
@@ -48,7 +49,7 @@ const UpdateProduct = () => {
   }
   return (
     <div>
-      <div className="wrapper">
+      <div className={clsx(styles.wrapper)}>
         <Form
           labelCol={{
             span: 4,
@@ -57,7 +58,7 @@ const UpdateProduct = () => {
             span: 14,
           }}
           layout="horizontal"
-          className="form"
+          className={clsx(styles.form)}
         >
           <h4>UPDATE PRODUCTS</h4>
           <Form.Item label="Name Product">
@@ -98,7 +99,11 @@ const UpdateProduct = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" onClick={handleUpdate}>
+            <Button
+              type="primary"
+              onClick={handleUpdate}
+              className={clsx(styles.button_update)}
+            >
               Update Product
             </Button>
           </Form.Item>

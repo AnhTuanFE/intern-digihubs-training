@@ -53,8 +53,8 @@ const User = () => {
           />
         </Dropdown>
       ) : (
-        <div>
-          <Link to="/login">Đăng nhập</Link>
+        <div className={clsx(styles.title_login)}>
+          <Link to="/login">Login</Link>
         </div>
       )}
     </div>

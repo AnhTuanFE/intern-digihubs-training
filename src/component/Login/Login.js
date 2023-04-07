@@ -22,23 +22,18 @@ function Login() {
     message.info("Đăng nhập thành công.");
     navigate("/");
   };
-  // const handleLogout = () => {
-  //   dispatch(logoutAction());
-  //   setCheck(!check);
-  //   form.resetFields();
-  //   message.info("Đã đăng xuất.");
-  // };
   return (
     <div className={clsx(styles.wrap_login)}>
       <div className={clsx(styles.wrap_form)}>
-        <h3 className={clsx(styles.title)}>Login</h3>
         <Form name="login" initialValues={{ remember: true }} form={form}>
           <Form.Item
             label="Username"
             name="username"
             rules={[{ message: "Please input your username!" }]}
+            className={clsx(styles.input_item)}
           >
             <Input
+              placeholder="Username"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -48,8 +43,10 @@ function Login() {
             label="Password"
             name="password"
             rules={[{ message: "Please input your password!" }]}
+            className={clsx(styles.input_item)}
           >
             <Input.Password
+              placeholder="Password"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -63,13 +60,6 @@ function Login() {
             >
               Login
             </Button>
-            {/* <Button
-              type="primary"
-              onClick={handleLogout}
-              className={clsx(styles.button_logout)}
-            >
-              Logout
-            </Button> */}
           </Form.Item>
         </Form>
       </div>
