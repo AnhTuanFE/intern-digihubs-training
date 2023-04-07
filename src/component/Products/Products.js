@@ -4,11 +4,10 @@ import {
   getListProducts as getListProductsAction,
   deleteProductRequest,
 } from "../../reduxSaga/actions/action";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import styles from "./Products.module.css";
-
 const { Content } = Layout;
 
 const style = {
@@ -23,6 +22,8 @@ const contentStyle = {
   color: "#fff",
   // border: "1px solid #000",
 };
+const NUM_PER_PAGE = 6;
+const TOTAL_PAGES = 3;
 
 function Products() {
   const [checkRender, setCheckRender] = useState(false);
@@ -40,6 +41,7 @@ function Products() {
     }
   };
 
+  //=========
   return (
     <div>
       <div>

@@ -8,7 +8,8 @@ import UpdateProduct from "./component/UpdateProduct";
 import Login from "./component/Login/Login";
 import User from "./component/User";
 import { Layout, Menu } from "antd";
-
+import { LoadingPosts } from "./component/Products/lazy/LoadingPosts";
+import Posts from "./component/Products/lazy/Posts";
 import AccountInformation from "./component/AccountInformation";
 import "./App.css";
 
@@ -20,28 +21,21 @@ function App() {
     <div>
       <Router>
         <Layout>
-          <Header
-            className="header"
-            style={{
-              position: "sticky",
-              top: 0,
-              zIndex: 1,
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                float: "left",
-                width: 120,
-                height: 31,
-                margin: "16px 24px 16px 0",
-                background: "rgba(255, 255, 255, 0.2)",
-              }}
-            ></div>
+          <Header className="header">
+            <div className="logo">
+              <Link to="/">
+                <img
+                  src="./images/logo1.jpg"
+                  alt="LOGO"
+                  className="logo_item"
+                />
+              </Link>
+            </div>
             <Menu
               mode="horizontal"
               defaultSelectedKeys={["1"]}
               text-color="white"
+              style={{ display: "flex" }}
             >
               <Menu.Item key="home">
                 <Link className="nav_item" to="/">
@@ -58,7 +52,16 @@ function App() {
                   Add product
                 </Link>
               </Menu.Item>
-              <Menu.Item key="user">
+              <Menu.Item key="imagePost">
+                <Link className="nav_item" to="/imagepost">
+                  image Post
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                key="user"
+                style={{ marginLeft: "auto", marginRight: "10%" }}
+                className="wrap_logo"
+              >
                 <User />
               </Menu.Item>
             </Menu>
@@ -76,6 +79,7 @@ function App() {
               <Route path="/addproduct" element={<AddProduct />} />
               <Route path="/updateproduct/:id" element={<UpdateProduct />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/imagepost" element={<Posts />} />
               <Route element={<PrivateRoute />}>
                 <Route
                   path="/accountinformation"

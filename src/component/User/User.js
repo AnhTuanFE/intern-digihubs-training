@@ -3,6 +3,10 @@ import { UserOutlined } from "@ant-design/icons";
 import { logoutAction } from "../../reduxSaga/actions/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import clsx from "clsx";
+import styles from "./User.module.css";
 
 const User = () => {
   const dispatch = useDispatch();
@@ -13,13 +17,10 @@ const User = () => {
   const handleMenuClick = (e) => {
     switch (e.key) {
       case "1":
-        navigate("/login");
-        break;
-      case "2":
         dispatch(logoutAction());
         navigate("/");
         break;
-      case "3":
+      case "2":
         navigate("/accountinformation");
         break;
       default:
@@ -28,23 +29,34 @@ const User = () => {
   };
   const menu = (
     <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1" disabled={check}>
-        Login
-      </Menu.Item>
-      <Menu.Item key="2" disabled={!check} danger>
+      <Menu.Item key="1" disabled={!check} danger>
         Logout
       </Menu.Item>
-      <Menu.Item key="3" disabled={!check}>
+      <Menu.Item key="2" disabled={!check}>
         Account Information
       </Menu.Item>
     </Menu>
   );
 
   return (
-    <div>
-      <Dropdown.Button overlay={menu} icon={<UserOutlined />}>
-        <span>User</span>
-      </Dropdown.Button>
+    <div className={clsx(styles.wrap_user)}>
+      {checkLogin ? (
+        <Dropdown
+          overlay={menu}
+          icon={<UserOutlined />}
+          className={clsx(styles.drop_button)}
+        >
+          <img
+            src="./images/user.png"
+            alt="USER"
+            className={clsx(styles.logo_user)}
+          />
+        </Dropdown>
+      ) : (
+        <div>
+          <Link to="/login">Đăng nhập</Link>
+        </div>
+      )}
     </div>
   );
 };
