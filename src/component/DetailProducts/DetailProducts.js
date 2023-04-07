@@ -21,7 +21,7 @@ function DetailProducts() {
   return (
     <div className={clsx(styles.wrapper)}>
       <div className={clsx(styles.wrap_content)}>
-        <h1>DETAIL PRODUCT</h1>
+        <h1 className={clsx(styles.title)}>DETAIL PRODUCT</h1>
         <Image
           width={200}
           src={detailProduct.image}
