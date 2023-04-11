@@ -11,7 +11,7 @@ import Products from "../component/Products";
 import AccountInformation from "../component/AccountInformation";
 import StudioDesign from "../pages/StudioDesign";
 import HeaderLayout from "../Layout/HeaderLayout/HeaderLayout";
-import HeaderStudioLayout from "../pages/StudioDesign/HeaderStudio/HeaderStudioLayout";
+// import HeaderStudioLayout from "../pages/StudioDesign/HeaderStudio/HeaderStudioLayout";
 // layout
 const publicRoutes = [
   { path: "/", component: Home, layout: HeaderLayout },
@@ -34,7 +34,7 @@ const publicRoutes = [
   },
   { path: "/login", component: Login, layout: HeaderLayout },
   { path: "/imagepost", component: Posts, layout: HeaderLayout },
-  { path: "/studio", component: StudioDesign, layout: HeaderStudioLayout },
+  // { path: "/studio", component: StudioDesign, layout: HeaderStudioLayout },
 ];
 
 const privateRoutes = [
