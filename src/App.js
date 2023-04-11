@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// const LazyProducts = React.lazy(() => import("./component/Products"));
 import "./App.css";
 import { publicRoutes, privateRoutes } from "./routes";
 import { Fragment } from "react";
 import DefaulLayout from "./Layout/defaulLayout";
 import RouteConfirmation from "./routes/RouteConfirmation/RouteConfirmation";
-import LazyLoadPage from "./Layout/LazyLoadPage/LazyLoadPage";
+// import LazyLoadPage from "./Layout/LazyLoadPage/LazyLoadPage";
+// const LazyProducts = React.lazy(() => import("./component/Products"));
 function App() {
   return (
     //           <Route

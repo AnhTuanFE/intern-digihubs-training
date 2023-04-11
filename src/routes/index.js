@@ -1,16 +1,17 @@
-import React from "react";
-import Home from "../component/Home/Home";
-import AddProduct from "../component/AddProduct/AddProduct";
+// import React from "react";
+// const LazyProducts = React.lazy(() => import("../component/Products"));
+
+import Home from "../component/Home";
+import AddProduct from "../component/AddProduct";
 import DetailProducts from "../component/DetailProducts";
-import UpdateProduct from "../component/UpdateProduct/UpdateProduct";
-import Login from "../component/Login/Login";
+import UpdateProduct from "../component/UpdateProduct";
+import Login from "../component/Login";
 import Posts from "../component/LazyLoadImages/Posts";
-import Products from "../component/Products/Products";
-import AccountInformation from "../component/AccountInformation/AccountInformation";
+import Products from "../component/Products";
+import AccountInformation from "../component/AccountInformation";
+import StudioDesign from "../pages/StudioDesign";
 import HeaderLayout from "../Layout/HeaderLayout/HeaderLayout";
-
-const LazyProducts = React.lazy(() => import("../component/Products"));
-
+import HeaderStudioLayout from "../pages/StudioDesign/HeaderStudio/HeaderStudioLayout";
 // layout
 const publicRoutes = [
   { path: "/", component: Home, layout: HeaderLayout },
@@ -33,7 +34,9 @@ const publicRoutes = [
   },
   { path: "/login", component: Login, layout: HeaderLayout },
   { path: "/imagepost", component: Posts, layout: HeaderLayout },
+  { path: "/studio", component: StudioDesign, layout: HeaderStudioLayout },
 ];
+
 const privateRoutes = [
   {
     path: "/accountinformation",
