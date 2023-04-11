@@ -1,0 +1,30 @@
+.wrap_header {
+  margin: 0 10%;
+  background-color: white;
+}
+.header {
+  display: flex;
+  background-color: white;
+}
+.wrap_logo {
+  flex: 0 0 30%;
+}
+.logo1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.logo2 {
+  font-weight: 600;
+  font-size: 18px;
+}
+.wrap_menu {
+  flex: 0 0 60%;
+}
+.menu {
+  display: flex;
+  width: 100%;
+}
+.menu_item {
+  font-weight: 600;
+}

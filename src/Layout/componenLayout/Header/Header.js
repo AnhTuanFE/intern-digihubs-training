@@ -41,6 +41,11 @@ function UseHeader() {
                 LIST IMAGE
               </Link>
             </Menu.Item>
+            <Menu.Item key="studio">
+              <Link className="nav_item" to="/studio">
+                STUDIO DESIGN
+              </Link>
+            </Menu.Item>
             <Menu.Item
               key="user"
               style={{ marginLeft: "auto", marginRight: "10%" }}
