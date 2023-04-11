@@ -1,93 +1,77 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import PrivateRoute from "./routes/PrivateRoute";
-import Home from "./component/Home";
-import AddProduct from "./component/AddProduct";
-import DetailProducts from "./component/DetailProducts";
-import UpdateProduct from "./component/UpdateProduct";
-import Login from "./component/Login/Login";
-import User from "./component/User";
-import { Layout, Menu } from "antd";
-import Posts from "./component/LazyLoadImages/Posts";
-import AccountInformation from "./component/AccountInformation";
+// const LazyProducts = React.lazy(() => import("./component/Products"));
 import "./App.css";
-
-const LazyProducts = React.lazy(() => import("./component/Products"));
-const { Header } = Layout;
-
+import { publicRoutes, privateRoutes } from "./routes";
+import { Fragment } from "react";
+import DefaulLayout from "./Layout/defaulLayout";
+import RouteConfirmation from "./routes/RouteConfirmation/RouteConfirmation";
+import LazyLoadPage from "./Layout/LazyLoadPage/LazyLoadPage";
 function App() {
   return (
+    //           <Route
+    //             path="/products"
+    //             element={
+    //               <React.Suspense fallback={<div>Loading products...</div>}>
+    //                 <LazyProducts />
+    //               </React.Suspense>
+    //             }
+    //           />
     <div>
       <Router>
-        <Layout>
-          <Header className="header">
-            <div className="logo">
-              <Link to="/">
-                <img
-                  src="./images/logo1.jpg"
-                  alt="LOGO"
-                  className="logo_item"
-                />
-              </Link>
-            </div>
-            <Menu
-              mode="horizontal"
-              defaultSelectedKeys={["1"]}
-              text-color="white"
-              style={{ display: "flex" }}
-            >
-              <Menu.Item key="home">
-                <Link className="nav_item" to="/">
-                  HOME
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="product">
-                <Link className="nav_item" to="/products">
-                  PRODUCTS
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="addProduct">
-                <Link className="nav_item" to="/addproduct">
-                  ADD PRODUCT
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="imagePost">
-                <Link className="nav_item" to="/imagepost">
-                  LIST IMAGE
-                </Link>
-              </Menu.Item>
-              <Menu.Item
-                key="user"
-                style={{ marginLeft: "auto", marginRight: "10%" }}
-                className="wrap_logo"
-              >
-                <User />
-              </Menu.Item>
-            </Menu>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                path="/products"
-                element={
-                  <React.Suspense fallback={<div>Loading products...</div>}>
-                    <LazyProducts />
-                  </React.Suspense>
-                }
-              />
-              <Route path="/detaiproduct/:id" element={<DetailProducts />} />
-              <Route path="/addproduct" element={<AddProduct />} />
-              <Route path="/updateproduct/:id" element={<UpdateProduct />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/imagepost" element={<Posts />} />
-              <Route element={<PrivateRoute />}>
+        <div className="App">
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              let Layout = DefaulLayout;
+              let LazyPage = Fragment;
+              if (route.layout) {
+                Layout = route.layout;
+              } else if (route.layout === null) {
+                Layout = Fragment;
+              }
+              // else if (route.lazy) {
+              //   LazyPage = LazyLoadPage;
+              // }
+              const Page = route.component;
+              return (
                 <Route
-                  path="/accountinformation"
-                  element={<AccountInformation />}
+                  key={index}
+                  path={route.path}
+                  element={
+                    <Layout>
+                      <LazyPage>
+                        <Page />
+                      </LazyPage>
+                    </Layout>
+                  }
                 />
-              </Route>
-            </Routes>
-          </Header>
-        </Layout>
+              );
+            })}
+
+            {privateRoutes.map((route, index) => {
+              let Layout = DefaulLayout;
+              if (route.layout) {
+                Layout = route.layout;
+              } else if (route.layout === null) {
+                Layout = Fragment;
+              }
+              const Page = route.component;
+              return (
+                <Route element={<RouteConfirmation />}>
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    }
+                  />
+                </Route>
+              );
+            })}
+          </Routes>
+        </div>
       </Router>
     </div>
   );
