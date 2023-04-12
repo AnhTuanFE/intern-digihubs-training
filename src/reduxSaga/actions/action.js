@@ -102,3 +102,22 @@ export const logoutAction = () => {
     type: types.LOGOUT,
   };
 };
+
+export const registerActionRequest = (payload) => {
+  return {
+    type: types.REGISTER_REQUEST,
+    payload,
+  };
+};
+export const registerActionSuccess = (payload) => {
+  return {
+    type: types.REGISTER_SUCCESS,
+    payload,
+  };
+};
+export const registerActionFail = (payload) => {
+  return {
+    type: types.REGISTER_FAILURE,
+    payload,
+  };
+};

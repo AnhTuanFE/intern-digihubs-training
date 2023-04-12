@@ -46,3 +46,16 @@ export const updateProduct = async (object) => {
 export const testGetDataProduct = (id) => {
   return axios.get(`${BaseURL.baseURL}/products/${id}`);
 };
+
+export const apiRegister = async (user) => {
+  // const config = {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // };
+  const response = await axios.post(
+    `${BaseURL.serverURL}/api/v1/users/register`,
+    user
+  );
+  return response.config.data;
+};

@@ -1,0 +1,12 @@
+.wrap_register {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register {
+  flex: 0 0 70%;
+}
+.register_title {
+  margin-bottom: 20px;
+}

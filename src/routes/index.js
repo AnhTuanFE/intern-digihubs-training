@@ -10,8 +10,9 @@ import AccountInformation from "../component/AccountInformation/AccountInformati
 import HeaderLayout from "../Layout/HeaderLayout/HeaderLayout";
 import StudioDesign from "../StudioDesign/StudioDesign";
 import HeaderStudioLayout from "../StudioDesign/HeaderStudio/HeaderStudioLayout";
-const LazyProducts = React.lazy(() => import("../component/Products"));
+import Register from "../pages/Register";
 
+const LazyProducts = React.lazy(() => import("../component/Products"));
 // layout
 const publicRoutes = [
   { path: "/", component: Home, layout: HeaderLayout },
@@ -35,6 +36,7 @@ const publicRoutes = [
   { path: "/login", component: Login, layout: HeaderLayout },
   { path: "/imagepost", component: Posts, layout: HeaderLayout },
   { path: "/studio", component: StudioDesign, layout: HeaderStudioLayout },
+  { path: "/register", component: Register, layout: HeaderStudioLayout },
 ];
 const privateRoutes = [
   {

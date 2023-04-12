@@ -46,6 +46,11 @@ function UseHeader() {
                 STUDIO DESIGN
               </Link>
             </Menu.Item>
+            <Menu.Item key="studio">
+              <Link className="nav_item" to="/register">
+                REGISTER
+              </Link>
+            </Menu.Item>
             <Menu.Item
               key="user"
               style={{ marginLeft: "auto", marginRight: "10%" }}

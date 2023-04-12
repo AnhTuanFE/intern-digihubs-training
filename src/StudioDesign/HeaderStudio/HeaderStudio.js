@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Menu, Layout, Button, Popover } from "antd";
 import { EyeFilled } from "@ant-design/icons";
-import { enquireScreen } from "enquire-js";
 import styles from "./HeaderStudio.module.css";
 import clsx from "clsx";
-
-const { Header } = Layout;
 
 const LOGO_URL =
   "https://gw.alipayobjects.com/zos/rmsportal/gVAKqIsuJCepKNbgbSwE.svg";
@@ -14,7 +11,6 @@ const LOGO_URL =
 function HeaderStudio() {
   return (
     <Layout>
-      {/* className={clsx(styles.wrap_header)} */}
       <div>
         <div className={clsx(styles.header)}>
           <div className={clsx(styles.wrap_logo)}>

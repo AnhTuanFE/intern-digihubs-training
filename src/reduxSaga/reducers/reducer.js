@@ -170,3 +170,24 @@ export const loginReducer = (
     }
   }
 };
+
+const initRegister = {};
+export const registerReducer = (state = initRegister, action) => {
+  switch (action.type) {
+    case types.REGISTER_SUCCESS: {
+      return {
+        ...state,
+        initRegister: action.payload,
+      };
+    }
+    case types.REGISTER_FAILURE: {
+      return {
+        ...state,
+        initRegister: null,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};

@@ -6,6 +6,7 @@ import {
   deleteProduct,
   updateProduct,
   testGetDataProduct,
+  apiRegister,
 } from "../apis/API";
 import {
   getListProductsSuccess,
@@ -19,6 +20,9 @@ import {
   updateProductFailure,
   testGetProductSuccess,
   testGetProductFailure,
+  registerActionRequest,
+  registerActionSuccess,
+  registerActionFail,
 } from "../actions/action";
 import * as types from "../constants/constant";
 
@@ -128,6 +132,21 @@ export function* testProductSaga() {
   }
   //cách 3 end
 }
+
+function* register(action) {
+  try {
+    const inforUserRegister = yield call(apiRegister, action.payload);
+    // localStorage.setItem("userInfo", JSON.stringify(inforUserRegister));
+    console.log("inforUserRegister = ", inforUserRegister);
+    yield put(registerActionSuccess(inforUserRegister));
+  } catch (err) {
+    yield put(registerActionFail(err));
+  }
+}
+export function* registerSaga() {
+  yield takeLatest(types.REGISTER_REQUEST, register);
+}
+
 //===============================================
 // all gom nhóm nhiều effect để thực hiện
 const jobSagas = [
@@ -136,6 +155,8 @@ const jobSagas = [
   all([addProductSaga()]),
   all([deleteProductSaga()]),
   all([updateProductSaga()]),
+  all([registerSaga()]),
+
   // all([testProductSaga()]), (cách 1 + 2)
   fork(testProductSaga), // cách 3
 ];
