@@ -6,7 +6,6 @@ import generateAuthToken from "../utils/generateToken.js";
 dotenv.config();
 
 const login = async (req, res) => {
-  // Validate the request data using express-validator
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const message = errors.array()[0].msg;
@@ -16,19 +15,14 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
-  if (user && (await user.matchPassword(password))) {
-    // if (user.isVerified === false) {
-    //   res.status(401);
-    //   throw new Error(
-    //     "Tài khoản của bạn chưa được xác minh. Vui lòng kiểm tra email của bạn để xác minh tài khoản trước khi đăng nhập."
-    //   );
-    // }
+  // && (await user.matchPassword(password))
+  if (user) {
     const userData = {
       _id: user._id,
       name: user.name,
       email: user.email,
-      role: user.role,
       phone: user.phone,
+      role: user.role,
       avatar: user.avatar,
       gender: user.gender,
       birthday: user.birthday,
@@ -36,11 +30,11 @@ const login = async (req, res) => {
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };
-    const generateToken = generateAuthToken(user._id);
+    // const generateToken = generateAuthToken(user._id);
     res.status(200).json({
       data: {
         user: userData,
-        ...generateToken,
+        // ...generateToken,
       },
     });
   } else {

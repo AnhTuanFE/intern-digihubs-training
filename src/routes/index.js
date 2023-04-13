@@ -8,11 +8,12 @@ import Posts from "../component/LazyLoadImages/Posts";
 import Products from "../component/Products/Products";
 import AccountInformation from "../component/AccountInformation/AccountInformation";
 import HeaderLayout from "../Layout/HeaderLayout/HeaderLayout";
+
 import StudioDesign from "../StudioDesign/StudioDesign";
 import HeaderStudioLayout from "../StudioDesign/HeaderStudio/HeaderStudioLayout";
 import Register from "../pages/Register";
 import LoginStudio from "../pages/LoginStudio/LoginStudio";
-const LazyProducts = React.lazy(() => import("../component/Products"));
+// const LazyProducts = React.lazy(() => import("../component/Products"));
 // layout
 const publicRoutes = [
   { path: "/", component: Home, layout: HeaderLayout },

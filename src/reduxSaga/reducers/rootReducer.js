@@ -8,6 +8,7 @@ import {
   testGetProductReducer,
   loginReducer,
   registerReducer,
+  loginStudioReducer,
 } from "./reducer";
 
 const rootReducer = combineReducers({
@@ -19,5 +20,6 @@ const rootReducer = combineReducers({
   dataTestProduct: testGetProductReducer,
   dataLogin: loginReducer,
   dataRegister: registerReducer,
+  userInformation: loginStudioReducer,
 });
 export default rootReducer;

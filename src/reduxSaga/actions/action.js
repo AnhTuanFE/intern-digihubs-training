@@ -126,3 +126,22 @@ export const logoutActionStudio = () => {
     type: types.LOGOUT_STUDIO,
   };
 };
+
+export const loginActionStudioRequest = (payload) => {
+  return {
+    type: types.LOGIN_STUDIO_REQUEST,
+    payload,
+  };
+};
+export const loginActionStudioSuccess = (payload) => {
+  return {
+    type: types.LOGIN_STUDIO_SUCCESS,
+    payload,
+  };
+};
+export const loginActionStudioFailure = (payload) => {
+  return {
+    type: types.LOGIN_STUDIO_FAILURE,
+    payload,
+  };
+};

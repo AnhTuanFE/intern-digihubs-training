@@ -59,3 +59,11 @@ export const apiRegister = async (user) => {
   );
   return response.config.data;
 };
+
+export const apiLogin = async (infor) => {
+  const response = await axios.post(
+    `${baseURL.serverURL}/api/v1/users/login`,
+    infor
+  );
+  return response.data.data;
+};

@@ -1,26 +1,38 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux"; // useSelector,
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"; // useSelector,
 import { useNavigate } from "react-router-dom";
-//, logoutAction
 import { Form, Input, Button, message } from "antd";
 import clsx from "clsx";
 import styles from "./LoginStudio.module.css";
+import { loginActionStudioRequest } from "../../reduxSaga/actions/action";
 
 function LoginStudio() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [check, setCheck] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
+
+  const userInfor = useSelector((state) => state.userInformation);
+  const { loading, userInformation, error } = userInfor;
+  const inforUser = useSelector((state) => state.dataRegister);
+  const { initRegister } = inforUser;
+
   const handleLogin = () => {
-    // dispatch(loginAction({ email, password }));
+    dispatch(loginActionStudioRequest({ email, password }));
     // form.resetFields();
-    // setCheck(!check);
-    // message.info("Đăng nhập thành công.");
-    // navigate("/");
   };
+
+  useEffect(() => {
+    if (userInformation || initRegister) {
+      message.info("Đăng nhập thành công.");
+      navigate("/studio");
+    }
+  }, [userInfor, dispatch, inforUser]);
+
+  console.log("initRegister = ", initRegister);
+
   return (
     <div className={clsx(styles.wrap_login)}>
       <div className={clsx(styles.wrap_form)}>
@@ -44,7 +56,8 @@ function LoginStudio() {
             rules={[{ message: "Please input your password!" }]}
             className={clsx(styles.input_item)}
           >
-            <Input.Password
+            {/* .Password */}
+            <Input
               placeholder="Password"
               onChange={(e) => {
                 setPassword(e.target.value);

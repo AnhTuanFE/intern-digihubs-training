@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import * as types from "../constants/constant";
 
 const stateInit = { products: [], load: false };
@@ -189,6 +190,36 @@ export const registerReducer = (state = {}, action) => {
       return {
         ...state,
         initRegister: null,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};
+export const loginStudioReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.LOGIN_STUDIO_REQUEST: {
+      return {
+        loading: true,
+      };
+    }
+    case types.LOGIN_STUDIO_SUCCESS: {
+      return {
+        loading: false,
+        userInformation: action.payload,
+      };
+    }
+    case types.LOGIN_STUDIO_FAILURE: {
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    }
+    case types.LOGOUT_STUDIO: {
+      return {
+        userInformation: null,
+        loading: false,
       };
     }
     default: {

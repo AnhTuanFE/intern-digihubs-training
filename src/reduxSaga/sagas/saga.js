@@ -7,6 +7,7 @@ import {
   updateProduct,
   testGetDataProduct,
   apiRegister,
+  apiLogin,
 } from "../apis/API";
 import {
   getListProductsSuccess,
@@ -20,9 +21,11 @@ import {
   updateProductFailure,
   testGetProductSuccess,
   testGetProductFailure,
-  registerActionRequest,
   registerActionSuccess,
   registerActionFail,
+  loginActionStudioRequest,
+  loginActionStudioSuccess,
+  loginActionStudioFailure,
 } from "../actions/action";
 import * as types from "../constants/constant";
 
@@ -84,11 +87,7 @@ function* deleteProductSa(action) {
 export function* deleteProductSaga() {
   yield takeLatest(types.DELETE_PRODUCT_REQUEST, deleteProductSa);
 }
-//----------------------+++++++-------
-// const payload = { // payload action
-//   id: 0,
-//   product: {},
-// };
+
 function* updateProductSa(action) {
   try {
     const product = yield call(updateProduct, action.payload);
@@ -136,7 +135,6 @@ export function* testProductSaga() {
 function* register(action) {
   try {
     const inforUserRegister = yield call(apiRegister, action.payload);
-    // localStorage.setItem("userInfo", JSON.stringify(inforUserRegister));
     console.log("inforUserRegister = ", inforUserRegister);
     yield put(registerActionSuccess(inforUserRegister));
   } catch (err) {
@@ -147,6 +145,19 @@ export function* registerSaga() {
   yield takeLatest(types.REGISTER_REQUEST, register);
 }
 
+function* loginStudio(action) {
+  try {
+    const userInformation = yield call(apiLogin, action.payload);
+    console.log("userInformation = ", userInformation);
+
+    yield put(loginActionStudioSuccess(userInformation));
+  } catch (error) {
+    yield put(loginActionStudioFailure(error));
+  }
+}
+export function* loginStudioSaga() {
+  yield takeLatest(types.LOGIN_STUDIO_REQUEST, loginStudio);
+}
 //===============================================
 // all gom nhóm nhiều effect để thực hiện
 const jobSagas = [
@@ -156,6 +167,7 @@ const jobSagas = [
   all([deleteProductSaga()]),
   all([updateProductSaga()]),
   all([registerSaga()]),
+  all([loginStudioSaga()]),
 
   // all([testProductSaga()]), (cách 1 + 2)
   fork(testProductSaga), // cách 3
