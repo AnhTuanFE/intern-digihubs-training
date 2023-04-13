@@ -8,43 +8,46 @@ import generateAuthToken from "../utils/generateToken.js";
 const userRouter = express.Router();
 userRouter.post(
   "/register",
-  // validate.register,
-  // asyncHandler(userController.register)
-  asyncHandler(async (req, res) => {
-    const { name, email, phone, password } = req.body;
-    const userExists = await User.findOne({ email });
+  validate.register,
+  asyncHandler(userController.register)
 
-    if (userExists) {
-      res.status(400);
-      throw new Error("Tài khoản đã tồn tại");
-    }
+  // asyncHandler(async (req, res) => {
+  //   const { name, email, phone, password } = req.body;
+  //   const userExists = await User.findOne({ email });
 
-    const user = await User.create({
-      name,
-      email,
-      phone,
-      password,
-    });
+  //   if (userExists) {
+  //     res.status(400);
+  //     throw new Error("Tài khoản đã tồn tại");
+  //   }
 
-    if (user) {
-      res.status(201).json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        role: user.role,
-        avatar: user.avatar,
-        gender: user.gender,
-        birthday: user.birthday,
-        address: user.address,
-        token: generateAuthToken(user._id),
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-      });
-    } else {
-      res.status(400);
-      throw new Error("Invalid User Data");
-    }
-  })
+  //   const user = await User.create({
+  //     name,
+  //     email,
+  //     phone,
+  //     password,
+  //   });
+
+  //   if (user) {
+  //     res.status(201).json({
+  //       _id: user._id,
+  //       name: user.name,
+  //       email: user.email,
+  //       phone: user.phone,
+  //       role: user.role,
+  //       avatar: user.avatar,
+  //       gender: user.gender,
+  //       birthday: user.birthday,
+  //       address: user.address,
+  //       token: generateAuthToken(user._id),
+  //       createdAt: user.createdAt,
+  //       updatedAt: user.updatedAt,
+  //     });
+  //   } else {
+  //     res.status(400);
+  //     throw new Error("Invalid User Data");
+  //   }
+  // })
 );
+userRouter.post("/login", validate.login, asyncHandler(userController.login));
+
 export default userRouter;

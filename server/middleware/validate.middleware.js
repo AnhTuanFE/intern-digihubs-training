@@ -13,29 +13,30 @@ const validate = {
       .withMessage("Email không được để trống")
       .isEmail()
       .withMessage("Địa chỉ email không hợp lệ"),
-    check("phone")
-      .trim()
-      .not()
-      .isEmpty()
-      .withMessage("Số điện thoại không được để trống")
-      .isLength({ min: 10, max: 10 })
-      .withMessage("Số điện thoại không hợp lệ")
-      .isMobilePhone()
-      .withMessage("Số điện thoại không hợp lệ"),
-    check("password")
-      .not()
-      .isEmpty()
-      .withMessage("Mật khẩu không được để trống")
-      .matches(/^(?=.*[A-Za-z])(?=.*\d)[^\s]{6,255}$/)
-      .withMessage(
-        "Mật khẩu phải từ 6 - 255 ký tự, ít nhất 1 chữ cái, 1 chữ số và không có khoảng trắng"
-      ),
-    check("confirmPassword").custom((confirmPassword, { req }) => {
-      if (confirmPassword !== req.body.password) {
-        throw new Error("Xác nhận mật khẩu không khớp");
-      }
-      return true;
-    }),
+    // check("phone")
+    //   .trim()
+    //   .not()
+    //   .isEmpty()
+    //   .withMessage("Số điện thoại không được để trống")
+    //   .isLength({ min: 10, max: 10 })
+    //   .withMessage("Số điện thoại không hợp lệ")
+    //   .isMobilePhone()
+    //   .withMessage("Số điện thoại không hợp lệ"),
+    // check("password")
+    //   .not()
+    //   .isEmpty()
+    //   .withMessage("Mật khẩu không được để trống")
+    //   .matches(/^(?=.*[A-Za-z])(?=.*\d)[^\s]{6,255}$/)
+    //   .withMessage(
+    //     "Mật khẩu phải từ 6 - 255 ký tự, ít nhất 1 chữ cái, 1 chữ số và không có khoảng trắng"
+    //   ),
+    // check("confirmPassword").custom((confirmPassword, { req }) => {
+    //   if (confirmPassword !== req.body.password) {
+    //     throw new Error("Xác nhận mật khẩu không khớp");
+    //   }
+    //   return true;
+    // }
+    // ),
   ],
   login: [
     check("email")

@@ -1,5 +1,5 @@
-const BaseURL = {
-  baseURL: "http://localhost:3004",
+const baseURL = {
+  urlJsonServer: "http://localhost:3004",
   serverURL: "http://localhost:9000",
 };
-export default BaseURL;
+export default baseURL;

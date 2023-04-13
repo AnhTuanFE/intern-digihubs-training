@@ -121,3 +121,8 @@ export const registerActionFail = (payload) => {
     payload,
   };
 };
+export const logoutActionStudio = () => {
+  return {
+    type: types.LOGOUT_STUDIO,
+  };
+};

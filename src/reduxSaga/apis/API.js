@@ -1,22 +1,27 @@
 import axios from "axios";
-import BaseURL from "./baseURL";
+import baseURL from "./baseURL";
 
 export const getProductsData = () => {
-  return axios.get(`${BaseURL.baseURL}/products`);
+  return axios.get(`${baseURL.urlJsonServer}/products`);
 };
 
 export const getProductById = async (id) => {
-  const response = await axios.get(`${BaseURL.baseURL}/products/${id}`);
+  const response = await axios.get(`${baseURL.urlJsonServer}/products/${id}`);
   return response.data;
 };
 
 export const addProduct = async (product) => {
-  const response = await axios.post(`${BaseURL.baseURL}/products`, product);
+  const response = await axios.post(
+    `${baseURL.urlJsonServer}/products`,
+    product
+  );
   return response.data;
 };
 
 export const deleteProduct = async (id) => {
-  const response = await axios.delete(`${BaseURL.baseURL}/products/${id}`);
+  const response = await axios.delete(
+    `${baseURL.urlJsonServer}/products/${id}`
+  );
   return response.data;
 };
 
@@ -31,30 +36,25 @@ export const deleteProduct = async (id) => {
 // };
 export const updateProduct = async (object) => {
   const response = await axios.put(
-    `${BaseURL.baseURL}/products/${object.id}`,
+    `${baseURL.urlJsonServer}/products/${object.id}`,
     object.product
   );
   return response.data;
 };
 
 // export const testGetDataProduct = async (id) => {
-// const response = await axios.get(`${BaseURL.baseURL}/products/${id}`);
+// const response = await axios.get(`${baseURL.urlJsonServer}/products/${id}`);
 // console.log("API xem api trả về cái gì", response);
 // return response.data;
 // };
 
 export const testGetDataProduct = (id) => {
-  return axios.get(`${BaseURL.baseURL}/products/${id}`);
+  return axios.get(`${baseURL.urlJsonServer}/products/${id}`);
 };
 
 export const apiRegister = async (user) => {
-  // const config = {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // };
   const response = await axios.post(
-    `${BaseURL.serverURL}/api/v1/users/register`,
+    `${baseURL.serverURL}/api/v1/users/register`,
     user
   );
   return response.config.data;

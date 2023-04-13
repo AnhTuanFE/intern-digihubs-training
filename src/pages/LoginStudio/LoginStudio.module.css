@@ -1,0 +1,27 @@
+.wrap_login {
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  padding: 4% 0;
+}
+.wrap_form {
+  width: 33%;
+  padding: 4% 5%;
+  box-shadow: 0 1px 11px rgba(168, 168, 168, 0.27);
+  text-align: center;
+}
+.input_item {
+  font-weight: 500;
+}
+.wrap_button {
+  text-align: center;
+  border-radius: 5px;
+}
+.button_login {
+  margin-right: 10px;
+  text-transform: uppercase;
+  color: white;
+  background-color: #1677ff;
+  font-weight: 500;
+  padding: 0 30px;
+}

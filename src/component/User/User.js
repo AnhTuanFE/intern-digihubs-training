@@ -13,6 +13,7 @@ const User = () => {
   const dataUser = useSelector((state) => state.dataLogin);
   const { checkLogin } = dataUser;
   const check = checkLogin;
+
   const navigate = useNavigate();
   const handleMenuClick = (e) => {
     switch (e.key) {

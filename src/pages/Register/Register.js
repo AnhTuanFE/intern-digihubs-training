@@ -4,20 +4,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { registerActionRequest } from "../../reduxSaga/actions/action";
 import styles from "./Register.module.css";
 import { Button, Checkbox, Form, Input } from "antd";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassWord] = useState("");
   const [email, setEmail] = useState("");
   const [checkRegister, setCheckRegister] = useState(false);
 
+  const redirect = location.search ? location.search.split("=")[1] : "/studio";
   const dispatch = useDispatch();
   const inforUser = useSelector((state) => state.dataRegister);
+  const { initRegister } = inforUser;
 
   useEffect(() => {
-    console.log("dataRegister = ", inforUser);
-  }, [checkRegister]);
+    if (initRegister) {
+      alert("đăng ký tài khoản thành công");
+      navigate(redirect);
+    }
+    console.log("initRegister = ", initRegister);
+  }, [inforUser]);
 
   const handleRegister = () => {
     dispatch(registerActionRequest({ name, email, phone, password }));

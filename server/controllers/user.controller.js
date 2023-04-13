@@ -17,12 +17,12 @@ const login = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
-    if (user.isVerified === false) {
-      res.status(401);
-      throw new Error(
-        "Tài khoản của bạn chưa được xác minh. Vui lòng kiểm tra email của bạn để xác minh tài khoản trước khi đăng nhập."
-      );
-    }
+    // if (user.isVerified === false) {
+    //   res.status(401);
+    //   throw new Error(
+    //     "Tài khoản của bạn chưa được xác minh. Vui lòng kiểm tra email của bạn để xác minh tài khoản trước khi đăng nhập."
+    //   );
+    // }
     const userData = {
       _id: user._id,
       name: user.name,
@@ -50,8 +50,11 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
+  // validate request nếu đúng trả về true, sai về false
   const errors = validationResult(req);
+  // nếu err không trống thì nó sẽ chạy về if
   if (!errors.isEmpty()) {
+    // nếu cái này bằng false vì có dấu !
     const message = errors.array()[0].msg;
     return res.status(400).json({ message: message });
   }

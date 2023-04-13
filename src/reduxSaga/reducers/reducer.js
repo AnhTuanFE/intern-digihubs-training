@@ -171,8 +171,7 @@ export const loginReducer = (
   }
 };
 
-const initRegister = {};
-export const registerReducer = (state = initRegister, action) => {
+export const registerReducer = (state = {}, action) => {
   switch (action.type) {
     case types.REGISTER_SUCCESS: {
       return {
@@ -181,6 +180,12 @@ export const registerReducer = (state = initRegister, action) => {
       };
     }
     case types.REGISTER_FAILURE: {
+      return {
+        ...state,
+        initRegister: null,
+      };
+    }
+    case types.LOGOUT_STUDIO: {
       return {
         ...state,
         initRegister: null,
