@@ -1,9 +1,13 @@
 import { Button, Space, Layout, Col, Divider, Row, Image } from "antd";
 import { useSelector, useDispatch } from "react-redux";
+// import {
+//   getListProducts as getListProductsAction,
+//   deleteProductRequest,
+// } from "../../reduxSaga/actions/action";
 import {
-  getListProducts as getListProductsAction,
+  getListProducts,
   deleteProductRequest,
-} from "../../reduxSaga/actions/action";
+} from "../../reduxSaga/actions/productActions";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
@@ -29,7 +33,7 @@ function Products() {
   const listProducts = useSelector((state) => state.productsList);
   const { products, load } = listProducts;
   useEffect(() => {
-    dispatch(getListProductsAction());
+    dispatch(getListProducts());
   }, [checkRender]);
 
   const handleDeleteProduct = (id) => {

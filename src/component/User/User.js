@@ -1,6 +1,6 @@
 import { Dropdown, Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { logoutAction } from "../../reduxSaga/actions/action";
+import { logoutAction } from "../../reduxSaga/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, message } from "antd";
 import clsx from "clsx";
 import styles from "./LoginStudio.module.css";
-import { loginActionStudioRequest } from "../../reduxSaga/actions/action";
+import { loginActionStudioRequest } from "../../reduxSaga/actions/userActions";
 
 function LoginStudio() {
   const [email, setEmail] = useState("");

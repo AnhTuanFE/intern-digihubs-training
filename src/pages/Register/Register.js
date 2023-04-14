@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
-import { registerActionRequest } from "../../reduxSaga/actions/action";
+import { registerActionRequest } from "../../reduxSaga/actions/userActions";
 import styles from "./Register.module.css";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";

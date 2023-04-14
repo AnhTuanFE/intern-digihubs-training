@@ -1,25 +1,16 @@
 import { combineReducers } from "redux";
-import {
-  getListProductsReducer,
-  productReducer,
-  addProductReducer,
-  deleteProductReducer,
-  updateProductReducer,
-  testGetProductReducer,
-  loginReducer,
-  registerReducer,
-  loginStudioReducer,
-} from "./reducer";
+import * as productReducers from "./productReducers";
+import * as userReducers from "./userReducers";
 
 const rootReducer = combineReducers({
-  productsList: getListProductsReducer,
-  productId: productReducer,
-  productAdd: addProductReducer,
-  productDelete: deleteProductReducer,
-  productUpdate: updateProductReducer,
-  dataTestProduct: testGetProductReducer,
-  dataLogin: loginReducer,
-  dataRegister: registerReducer,
-  userInformation: loginStudioReducer,
+  productsList: productReducers.getListProductsReducer,
+  productId: productReducers.productReducer,
+  productAdd: productReducers.addProductReducer,
+  productDelete: productReducers.deleteProductReducer,
+  productUpdate: productReducers.updateProductReducer,
+  dataTestProduct: productReducers.testGetProductReducer,
+  dataLogin: userReducers.loginReducer,
+  dataRegister: userReducers.registerReducer,
+  userInformation: userReducers.loginStudioReducer,
 });
 export default rootReducer;

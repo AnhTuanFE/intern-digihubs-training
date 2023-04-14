@@ -5,7 +5,7 @@ import { EyeFilled } from "@ant-design/icons";
 import styles from "./HeaderStudio.module.css";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutActionStudio } from "../../reduxSaga/actions/action";
+import { logoutActionStudio } from "../../reduxSaga/actions/userActions";
 
 function HeaderStudio() {
   const dispatch = useDispatch();

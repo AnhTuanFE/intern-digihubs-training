@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getProductRequest } from "../../reduxSaga/actions/action";
+import { getProductRequest } from "../../reduxSaga/actions/productActions";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Image } from "antd";

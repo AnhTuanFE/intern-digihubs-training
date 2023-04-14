@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import {
   getProductRequest,
   updateProductRequest,
-} from "../../reduxSaga/actions/action";
+} from "../../reduxSaga/actions/productActions";
 import clsx from "clsx";
 import styles from "./UpdateProduct.module.css";
 const { TextArea } = Input;
