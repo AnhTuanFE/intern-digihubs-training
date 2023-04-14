@@ -1,0 +1,33 @@
+.wrapper {
+}
+.footer {
+  display: flex;
+  /* justify-content: space-around; */
+}
+.footer_item {
+  flex: 0 0 20%;
+}
+.footer_item1 {
+  flex: 0 0 80%;
+}
+.row_item {
+  /* background: #0092ff; */
+  padding: 8px 0;
+  margin: 0 20px;
+}
+.title,
+.title_span {
+  font-weight: 500;
+  font-size: 20px;
+}
+.title,
+.title1 {
+  margin-bottom: 20px;
+}
+.title1 {
+  font-weight: 500;
+}
+.content_title1 {
+  font-size: 14px;
+  color: #434344;
+}

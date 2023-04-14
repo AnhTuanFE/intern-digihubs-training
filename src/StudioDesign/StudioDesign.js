@@ -1,31 +1,16 @@
-import clsx from "clsx";
-import styles from "./StudioDesign.module.css";
-import { Button } from "antd";
+import AdvertisingContent from "./AdvertisingContent/AdvertisingContent";
+import ListClient from "./ListClient/ListClient";
+import TypicalProduct from "./TypicalProduct/TypicalProduct";
+import HelpBusiness from "./HelpBusiness/HelpBusiness";
+import FooterStudio from "./FooterStudio/FooterStudio";
 function StudioDesign() {
   return (
     <div>
-      <div className={clsx(styles.wrap_introduction)}>
-        <div className={clsx(styles.introduction)}>
-          <h1 className={clsx(styles.introduction_title)}>
-            Digital Product Agency
-          </h1>
-          <p className={clsx(styles.introduction_content)}>
-            Leading digital agency with solid design and development expertise.
-            We build readymade websites, mobile applications, and elaborate
-            online business services.
-          </p>
-          <Button size="large" className={clsx(styles.introduction_button)}>
-            Contact Now
-          </Button>
-        </div>
-        <div className={clsx(styles.wrap_slider)}>
-          <img
-            src="./images/slider.jpg"
-            alt="slider"
-            className={clsx(styles.slider)}
-          />
-        </div>
-      </div>
+      <AdvertisingContent />
+      <ListClient />
+      <HelpBusiness />
+      <TypicalProduct />
+      <FooterStudio />
     </div>
   );
 }

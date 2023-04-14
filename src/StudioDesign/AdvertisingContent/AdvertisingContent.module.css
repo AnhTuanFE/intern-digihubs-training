@@ -1,0 +1,48 @@
+.wrap_introduction {
+  display: flex;
+  justify-content: center;
+  height: 608px;
+  width: 1372px;
+  padding-top: 20px;
+}
+.introduction {
+  flex: 0 0 33%;
+  margin: auto;
+  position: relative;
+}
+.introduction_title {
+  font-size: 40px;
+  font-weight: 600;
+  padding-bottom: 24px;
+}
+.introduction_content {
+  font-size: 14px;
+  color: #434344;
+  padding-bottom: 32px;
+}
+.wrap_rectangle {
+  position: absolute;
+}
+.rectangle {
+  max-width: 80%;
+}
+.introduction_button {
+  background-color: #2639ed;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 24px !important;
+  border: none;
+  float: left;
+  z-index: 3;
+}
+.wrap_slider {
+  flex: 0 0 60%;
+  width: 754px;
+  height: 512px;
+}
+.slider {
+  border-radius: 0 0 0 30%;
+  width: 754px;
+  height: 512px;
+  float: right;
+}

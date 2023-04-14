@@ -1,0 +1,33 @@
+.menu {
+  display: flex;
+  justify-content: space-around;
+}
+.menu_item {
+  height: 50px !important;
+  width: 170px !important;
+}
+.menu_item_client {
+  height: 124px !important;
+  width: 170px !important;
+  flex: 0 0 24%;
+  word-wrap: break-word;
+  margin-top: 22px;
+}
+.wrap_introduce_client {
+}
+.introduce_client_title {
+  font-size: 40px;
+  font-weight: 500;
+}
+.introduce_client_content {
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 28px;
+  color: #6e6e6e;
+}
+.wrap_logo {
+}
+.logo {
+  width: 150px;
+  height: 49px;
+}

@@ -25,15 +25,6 @@ export const deleteProduct = async (id) => {
   return response.data;
 };
 
-// const ob = {
-//   id: 1,
-//   product: {
-//     name: "",
-//     describe: "",
-//     cost: "",
-//     image: "",
-//   },
-// };
 export const updateProduct = async (object) => {
   const response = await axios.put(
     `${baseURL.urlJsonServer}/products/${object.id}`,
