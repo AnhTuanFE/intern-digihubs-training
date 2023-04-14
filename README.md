@@ -2,18 +2,19 @@
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory you can open 3 terminals:
+
+in the first terminal run:
 
 ### `npm start`
 
+in the second terminal run:
+
 ### `json-server --watch db.json --port 3004`
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the third terminal, go to the server and run:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
+### `npm run server`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.

@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Home from "../component/Home/Home";
 import AddProduct from "../component/AddProduct/AddProduct";
 import DetailProducts from "../component/DetailProducts";
@@ -14,7 +14,7 @@ import HeaderStudioLayout from "../StudioDesign/HeaderStudio/HeaderStudioLayout"
 import Register from "../pages/Register";
 import LoginStudio from "../pages/LoginStudio/LoginStudio";
 // const LazyProducts = React.lazy(() => import("../component/Products"));
-// layout
+
 const publicRoutes = [
   { path: "/", component: Home, layout: HeaderLayout },
   {

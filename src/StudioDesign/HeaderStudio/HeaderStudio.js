@@ -34,7 +34,7 @@ function HeaderStudio() {
           <div className={clsx(styles.wrap_menu)}>
             <Menu id="nav" key="nav" className={clsx(styles.menu)}>
               <Menu.Item className={clsx(styles.menu_item)} key="home">
-                <a href="">home</a>
+                <Link to="/">home</Link>
               </Menu.Item>
               <Menu.Item className={clsx(styles.menu_item)} key="whatwedo">
                 <a href="">
