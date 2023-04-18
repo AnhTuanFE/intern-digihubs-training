@@ -1,12 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// const LazyProducts = React.lazy(() => import("./component/Products"));
-import "./App.css";
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./routes";
-import { Fragment } from "react";
-import DefaulLayout from "./Layout/defaulLayout";
-import RouteConfirmation from "./routes/RouteConfirmation/RouteConfirmation";
-import LazyLoadPage from "./Layout/LazyLoadPage/LazyLoadPage";
+
+import DefaulLayout from "./layouts/DefaulLayout";
+import RouteConfirmation from "./routes/RouteConfirmation";
+import "./App.css";
+
+// const LazyProducts = React.lazy(() => import("./component/Products"));
+
 function App() {
   return (
     //           <Route
@@ -17,62 +18,52 @@ function App() {
     //               </React.Suspense>
     //             }
     //           />
-    <div>
-      <Router>
-        <div className="App">
-          <Routes>
-            {publicRoutes.map((route, index) => {
-              let Layout = DefaulLayout;
-              let LazyPage = Fragment;
-              if (route.layout) {
-                Layout = route.layout;
-              } else if (route.layout === null) {
-                Layout = Fragment;
+    <div className="App">
+      <Routes>
+        {publicRoutes.map((route, index) => {
+          let Layout = DefaulLayout;
+          if (route.layout) {
+            Layout = route.layout;
+          } else if (route.layout === null) {
+            Layout = Fragment;
+          }
+          const Page = route.component;
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <Layout>
+                  <Page />
+                </Layout>
               }
-              // else if (route.lazy) {
-              //   LazyPage = LazyLoadPage;
-              // }
-              const Page = route.component;
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={
-                    <Layout>
-                      <LazyPage>
-                        <Page />
-                      </LazyPage>
-                    </Layout>
-                  }
-                />
-              );
-            })}
+            />
+          );
+        })}
 
-            {privateRoutes.map((route, index) => {
-              let Layout = DefaulLayout;
-              if (route.layout) {
-                Layout = route.layout;
-              } else if (route.layout === null) {
-                Layout = Fragment;
-              }
-              const Page = route.component;
-              return (
-                <Route element={<RouteConfirmation />}>
-                  <Route
-                    key={index}
-                    path={route.path}
-                    element={
-                      <Layout>
-                        <Page />
-                      </Layout>
-                    }
-                  />
-                </Route>
-              );
-            })}
-          </Routes>
-        </div>
-      </Router>
+        {privateRoutes.map((route, index) => {
+          let Layout = DefaulLayout;
+          if (route.layout) {
+            Layout = route.layout;
+          } else if (route.layout === null) {
+            Layout = Fragment;
+          }
+          const Page = route.component;
+          return (
+            <Route element={<RouteConfirmation />}>
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            </Route>
+          );
+        })}
+      </Routes>
     </div>
   );
 }

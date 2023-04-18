@@ -1,50 +1,52 @@
-// import React from "react";
-import Home from "../component/Home/Home";
-import AddProduct from "../component/AddProduct/AddProduct";
-import DetailProducts from "../component/DetailProducts";
-import UpdateProduct from "../component/UpdateProduct/UpdateProduct";
-import Login from "../component/Login/Login";
-import Posts from "../component/LazyLoadImages/Posts";
-import Products from "../component/Products/Products";
-import AccountInformation from "../component/AccountInformation/AccountInformation";
-import HeaderLayout from "../Layout/HeaderLayout/HeaderLayout";
+import * as pages from "../pages";
+import * as productPages from "../pages/products";
+import HeaderOnly from "../layouts/HeaderOnly";
 
-import StudioDesign from "../StudioDesign/StudioDesign";
-import HeaderStudioLayout from "../StudioDesign/HeaderStudio/HeaderStudioLayout";
-import Register from "../pages/Register";
-import LoginStudio from "../pages/LoginStudio/LoginStudio";
-// const LazyProducts = React.lazy(() => import("../component/Products"));
+import StudioDesign from "../StudioDesign";
+import HeaderStudioOnly from "../StudioDesign/studioLayouts/HeaderStudioOnly";
+import RegisterStudio from "../StudioDesign/studioPages/RegisterStudio";
+import LoginStudio from "../StudioDesign/studioPages/LoginStudio";
 
 const publicRoutes = [
-  { path: "/", component: Home, layout: HeaderLayout },
+  { path: "/", component: pages.Home, layout: HeaderOnly },
   {
     path: "/products",
-    // lazy: true,
-    component: Products,
-    layout: HeaderLayout,
+    component: productPages.AllProducts,
+
+    layout: HeaderOnly,
   },
   {
     path: "/detaiproduct/:id",
-    component: DetailProducts,
-    layout: HeaderLayout,
+    component: productPages.DetailProducts,
+    layout: HeaderOnly,
   },
-  { path: "/addproduct", component: AddProduct, layout: HeaderLayout },
+  {
+    path: "/addproduct",
+    component: productPages.AddProduct,
+    layout: HeaderOnly,
+  },
   {
     path: "/updateproduct/:id",
-    component: UpdateProduct,
-    layout: HeaderLayout,
+    component: productPages.UpdateProduct,
+    layout: HeaderOnly,
   },
-  { path: "/login", component: Login, layout: HeaderLayout },
-  { path: "/imagepost", component: Posts, layout: HeaderLayout },
-  { path: "/studio", component: StudioDesign, layout: HeaderStudioLayout },
-  { path: "/register", component: Register, layout: HeaderStudioLayout },
-  { path: "/loginstudio", component: LoginStudio, layout: HeaderStudioLayout },
+  { path: "/login", component: pages.Login, layout: HeaderOnly },
+  { path: "/imagepost", component: pages.Posts, layout: HeaderOnly },
+
+  // Studio Router
+  { path: "/studio", component: StudioDesign, layout: HeaderStudioOnly },
+  {
+    path: "/registerstudio",
+    component: RegisterStudio,
+    layout: HeaderStudioOnly,
+  },
+  { path: "/loginstudio", component: LoginStudio, layout: HeaderStudioOnly },
 ];
 const privateRoutes = [
   {
     path: "/accountinformation",
-    component: AccountInformation,
-    layout: HeaderLayout,
+    component: pages.AccountInformation,
+    layout: HeaderOnly,
   },
 ];
 
