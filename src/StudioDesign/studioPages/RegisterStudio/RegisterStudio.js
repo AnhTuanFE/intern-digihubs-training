@@ -15,17 +15,20 @@ const RegisterStudio = () => {
   const [email, setEmail] = useState("");
 
   const dispatch = useDispatch();
-  const inforUser = useSelector((state) => state.dataRegister);
-  const { initRegister } = inforUser;
 
-  console.log("initRegister = ", initRegister);
+  const userReducerInitState = useSelector(
+    (state) => state.userReducerInitState
+  );
+  const { registeredUserInfomation } = userReducerInitState;
+
+  console.log("initRegister = ", registeredUserInfomation);
 
   useEffect(() => {
-    if (initRegister) {
+    if (registeredUserInfomation) {
       alert(" Đã đăng ký tài khoản");
       navigate("/studio");
     }
-  }, [inforUser, dispatch]);
+  }, [userReducerInitState, dispatch]);
 
   const handleRegister = () => {
     dispatch(registerActionRequest({ name, email, phone, password }));

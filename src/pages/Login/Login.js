@@ -14,6 +14,7 @@ function Login() {
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
+
   const handleLogin = () => {
     dispatch(loginAction({ email, password }));
     form.resetFields();
@@ -21,6 +22,7 @@ function Login() {
     message.info("Đăng nhập thành công.");
     navigate("/");
   };
+
   return (
     <div className={clsx(styles.wrap_login)}>
       <div className={clsx(styles.wrap_form)}>

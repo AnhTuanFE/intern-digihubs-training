@@ -1,143 +1,107 @@
 import { productconsts } from "../constants";
 
-const stateInit = { products: [], load: false };
-export const getListProductsReducer = (stateProduct = stateInit, action) => {
+const productInitState = {
+  // getListProductsReducer
+  listProducts: [], //products
+  getListProductLoading: false,
+
+  //productReducer
+  productById: {}, //product
+  errorGetProductById: null,
+
+  // addProductReducer
+  //addProductState
+  addOneProduct: {
+    // name: "",
+    // describe: "",
+    // cost: 0,
+    // image: "",
+  },
+
+  // deleteProductReducer
+  productWillDelete: null,
+  errorDeleProduct: null,
+
+  // updateProductReducer
+  productUpdate: {
+    // id: 0,
+    // product: {},
+  },
+
+  // testGetProductReducer
+  listProductTest: [],
+};
+
+const productReducers = (state = productInitState, action) => {
   switch (action.type) {
     case productconsts.GET_LIST_PRODUCTS: {
       return {
-        ...stateProduct,
-        load: true,
+        ...state,
+        getListProductLoading: true,
       };
     }
     case productconsts.GET_LIST_PRODUCTS_SUCCESS: {
       const { data } = action.payload;
       return {
-        ...stateProduct,
-        products: data,
-        load: false,
+        ...state,
+        listProducts: data,
+        getListProductLoading: false,
       };
     }
-    default: {
-      return stateProduct;
-    }
-  }
-};
-
-//====== get product from id
-
-const initialStateP = {
-  product: {},
-  error: null,
-};
-
-export const productReducer = (state = initialStateP, action) => {
-  switch (action.type) {
     case productconsts.GET_PRODUCT_SUCCESS:
       return {
         ...state,
-        product: action.product,
-        error: null,
+        productById: action.product,
+        errorGetProductById: null,
       };
     case productconsts.GET_PRODUCT_FAILURE:
       return {
         ...state,
-        product: null,
-        error: action.payload.error,
+        productById: null,
+        errorGetProductById: action.payload.error,
       };
-    default:
-      return state;
-  }
-};
-
-const addProductState = {
-  name: "",
-  describe: "",
-  cost: 0,
-  image: "",
-};
-
-export const addProductReducer = (state = addProductState, action) => {
-  switch (action.type) {
     case productconsts.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
-        name: action.product.name,
-        describe: action.product.describe,
-        cost: action.product.cost,
-        image: action.product.image,
+        addOneProduct: action.product,
       };
     case productconsts.ADD_PRODUCT_FAILURE:
       return {
         ...state,
-        name: null,
-        describe: null,
-        cost: null,
-        image: null,
+        addOneProduct: null,
       };
-    default:
-      return state;
-  }
-};
-
-const initialStateDelete = {
-  product: null,
-  error: null,
-};
-
-export const deleteProductReducer = (state = initialStateDelete, action) => {
-  switch (action.type) {
     case productconsts.DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
-        product: action.product,
-        error: null,
+        productWillDelete: action.product,
+        errorDeleProduct: null,
       };
     case productconsts.DELETE_PRODUCT_FAILURE:
       return {
         ...state,
-        product: null,
-        error: action.payload.error,
+        productWillDelete: null,
+        errorDeleProduct: action.payload.error,
       };
-    default:
-      return state;
-  }
-};
-
-const initialStateUpdate = {
-  id: 0,
-  product: {},
-};
-
-export const updateProductReducer = (state = initialStateUpdate, action) => {
-  switch (action.type) {
     case productconsts.UPDATE_PRODUCT_SUCCESS:
-      console.log("==> action UPDATE_PRODUCT_SUCCESS trả về", action);
       return {
         ...state,
-        product: action.product,
+        productUpdate: action.product,
       };
     case productconsts.UPDATE_PRODUCT_FAILURE:
       return {
         ...state,
-        product: null,
+        productUpdate: null,
       };
-    default:
-      return state;
-  }
-};
-
-export const testGetProductReducer = (state = { product: [] }, action) => {
-  switch (action.type) {
     case productconsts.TEST_GET_LIST_PRODUCT_SUCCESS: {
       return {
         ...state,
-        product: action.payload,
+        listProductTest: action.payload,
       };
     }
     case productconsts.TEST_GET_LIST_PRODUCT_FAILURE: {
       return {
         ...state,
-        product: null,
+        listProductTest: null,
       };
     }
     default: {
@@ -145,3 +109,5 @@ export const testGetProductReducer = (state = { product: [] }, action) => {
     }
   }
 };
+
+export default productReducers;

@@ -10,12 +10,14 @@ function DetailProducts() {
   const idProduct = useParams();
   const id = idProduct.id;
   const dispatch = useDispatch();
-  const detailProduct = useSelector((state) => state.productId.product);
+  const productInitState = useSelector((state) => state.productInitState);
+  const { productById } = productInitState;
+
   useEffect(() => {
     dispatch(getProductRequest(id));
   }, [id]);
 
-  if (!detailProduct) {
+  if (!productById) {
     return <div>Loading...</div>;
   }
   return (
@@ -24,7 +26,7 @@ function DetailProducts() {
         <h1 className={clsx(styles.title)}>DETAIL PRODUCT</h1>
         <Image
           width={200}
-          src={detailProduct.image}
+          src={productById.image}
           placeholder={
             <Image
               preview={false}
@@ -33,9 +35,9 @@ function DetailProducts() {
             />
           }
         />
-        <h3>{detailProduct.name}</h3>
-        <p>{detailProduct.describe}</p>
-        <h4>Giá: {detailProduct.cost}</h4>
+        <h3>{productById.name}</h3>
+        <p>{productById.describe}</p>
+        <h4>Giá: {productById.cost}</h4>
       </div>
     </div>
   );

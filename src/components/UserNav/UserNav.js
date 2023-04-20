@@ -10,8 +10,10 @@ import styles from "./UserNav.module.css";
 
 const UserNav = () => {
   const dispatch = useDispatch();
-  const dataUser = useSelector((state) => state.dataLogin);
-  const { checkLogin } = dataUser;
+  const userReducerInitState = useSelector(
+    (state) => state.userReducerInitState
+  );
+  const { checkLogin } = userReducerInitState;
   const check = checkLogin;
 
   const navigate = useNavigate();

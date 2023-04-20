@@ -8,7 +8,7 @@ import {
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
-import styles from "./Products.module.css";
+import styles from "./AllProducts.module.css";
 const { Content } = Layout;
 
 const style = {
@@ -26,9 +26,14 @@ const contentStyle = {
 
 function AllProducts() {
   const [checkRender, setCheckRender] = useState(false);
+
   const dispatch = useDispatch();
-  const listProducts = useSelector((state) => state.productsList);
-  const { products, load } = listProducts;
+
+  const productInitState = useSelector((state) => state.productInitState);
+
+  // const { products, load } = listProducts;
+  const { listProducts } = productInitState;
+
   useEffect(() => {
     dispatch(getListProducts());
   }, [checkRender]);
@@ -44,7 +49,9 @@ function AllProducts() {
       <div>
         <Space wrap>
           <Link to="/addproduct">
-            <Button type="primary">Thêm sản phẩm mới</Button>
+            <Button className={clsx(styles.button_add_product)} type="primary">
+              Thêm sản phẩm mới
+            </Button>
           </Link>
         </Space>
       </div>
@@ -64,7 +71,7 @@ function AllProducts() {
                 lg: 32,
               }}
             >
-              {products.map((item, index) => (
+              {listProducts.map((item, index) => (
                 <Col className={clsx(styles.gutter_row)} span={6} key={index}>
                   <div style={style}>
                     <Image

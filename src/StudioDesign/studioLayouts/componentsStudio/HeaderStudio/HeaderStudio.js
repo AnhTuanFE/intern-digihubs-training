@@ -10,10 +10,13 @@ import { logoutActionStudio } from "../../../../reduxSaga/actions/userActions";
 function HeaderStudio() {
   const dispatch = useDispatch();
 
-  const userInfor = useSelector((state) => state.userInformation);
-  const { loading, userInformation, error } = userInfor;
-  const inforUser = useSelector((state) => state.dataRegister);
-  const { initRegister } = inforUser;
+  const userReducerInitState = useSelector(
+    (state) => state.userReducerInitState
+  );
+  const { userInfoStudio, registeredUserInfomation } = userReducerInitState;
+
+  // const inforUser = useSelector((state) => state.dataRegister);
+  // const { initRegister } = inforUser;
 
   const handleLogout = () => {
     alert("Đã đăng xuất");
@@ -47,7 +50,7 @@ function HeaderStudio() {
               <Menu.Item className={clsx(styles.menu_item)} key="project">
                 <a href="">Project</a>
               </Menu.Item>
-              {userInformation == null && initRegister == null && (
+              {userInfoStudio == null && registeredUserInfomation == null && (
                 <>
                   <Menu.Item key="studio">
                     <Link
@@ -64,7 +67,7 @@ function HeaderStudio() {
                   </Menu.Item>
                 </>
               )}
-              {(userInformation || initRegister) && (
+              {(userInfoStudio || registeredUserInfomation) && (
                 <Button onClick={handleLogout}>Đăng xuất</Button>
               )}
             </Menu>

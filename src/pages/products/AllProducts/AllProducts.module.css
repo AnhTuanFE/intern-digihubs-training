@@ -1,6 +1,9 @@
 p {
   line-height: 20px;
 }
+.button_add_product {
+  background-color: #1677ff;
+}
 .wrap_products {
   display: flex;
   justify-content: space-around;

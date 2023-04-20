@@ -10,14 +10,6 @@ import "./App.css";
 
 function App() {
   return (
-    //           <Route
-    //             path="/products"
-    //             element={
-    //               <React.Suspense fallback={<div>Loading products...</div>}>
-    //                 <LazyProducts />
-    //               </React.Suspense>
-    //             }
-    //           />
     <div className="App">
       <Routes>
         {publicRoutes.map((route, index) => {

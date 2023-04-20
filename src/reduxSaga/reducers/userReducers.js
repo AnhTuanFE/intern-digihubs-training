@@ -1,9 +1,20 @@
 import { userConsts } from "../constants";
 
-export const loginReducer = (
-  state = { checkLogin: false, userInfo: {} },
-  action
-) => {
+const userReducerInitState = {
+  // login reducer
+  checkLogin: false,
+  userInfo: {},
+
+  // register reducer
+  registeredUserInfomation: {}, // initRegister
+
+  //loginStudioReducer
+  loadingLoginStudio: false, // loading
+  userInfoStudio: {}, //userInformation
+  errorLoginStudio: false, //error
+};
+
+const userReducers = (state = userReducerInitState, action) => {
   switch (action.type) {
     case userConsts.LOGIN: {
       return {
@@ -19,59 +30,42 @@ export const loginReducer = (
         userInfo: {},
       };
     }
-    default: {
-      return state;
-    }
-  }
-};
-
-export const registerReducer = (state = {}, action) => {
-  switch (action.type) {
     case userConsts.REGISTER_SUCCESS: {
       return {
         ...state,
-        initRegister: action.payload,
+        registeredUserInfomation: action.payload,
       };
     }
-    case userConsts.REGISTER_FAILURE: {
+    case userConsts.REGISTER_FAILURE | userConsts.LOGOUT_STUDIO: {
       return {
         ...state,
-        initRegister: null,
+        registeredUserInfomation: null,
       };
     }
-    case userConsts.LOGOUT_STUDIO: {
-      return {
-        ...state,
-        initRegister: null,
-      };
-    }
-    default: {
-      return state;
-    }
-  }
-};
-export const loginStudioReducer = (state = {}, action) => {
-  switch (action.type) {
     case userConsts.LOGIN_STUDIO_REQUEST: {
       return {
+        ...state,
         loading: true,
       };
     }
     case userConsts.LOGIN_STUDIO_SUCCESS: {
       return {
+        ...state,
         loading: false,
-        userInformation: action.payload,
+        userInfoStudio: action.payload,
       };
     }
     case userConsts.LOGIN_STUDIO_FAILURE: {
       return {
+        ...state,
         loading: false,
         error: action.payload,
       };
     }
     case userConsts.LOGOUT_STUDIO: {
       return {
-        userInformation: null,
+        ...state,
+        userInfoStudio: null,
         loading: false,
       };
     }
@@ -80,3 +74,5 @@ export const loginStudioReducer = (state = {}, action) => {
     }
   }
 };
+
+export default userReducers;

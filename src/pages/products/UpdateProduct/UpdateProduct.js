@@ -13,8 +13,11 @@ const { TextArea } = Input;
 const UpdateProduct = () => {
   const idProduct = useParams();
   const id = idProduct.id;
+
   const dispatch = useDispatch();
-  const productInfor = useSelector((state) => state.productId.product);
+  // const productInfor = useSelector((state) => state.productId.product);
+  const productInitState = useSelector((state) => state.productInitState);
+  const { productById } = productInitState;
 
   const [name1, setName] = useState("");
   const [describe1, setDescribe] = useState("");
@@ -26,12 +29,13 @@ const UpdateProduct = () => {
   }, [id]);
 
   useEffect(() => {
-    setName(productInfor.name);
-    setDescribe(productInfor.describe);
-    setCost(productInfor.cost);
-    setImage(productInfor.image);
+    setName(productById.name);
+    setDescribe(productById.describe);
+    setCost(productById.cost);
+    setImage(productById.image);
   });
-  const updateProduct = {
+
+  const productWillUpdate = {
     id: id,
     product: {
       name: name1,
@@ -40,11 +44,12 @@ const UpdateProduct = () => {
       image: image1,
     },
   };
+
   const handleUpdate = () => {
-    dispatch(updateProductRequest(updateProduct));
+    dispatch(updateProductRequest(productWillUpdate));
     alert("Cập nhật sản phẩm thành công");
   };
-  if (!productInfor) {
+  if (!productById) {
     return <div>Loading...</div>;
   }
   return (
@@ -65,8 +70,8 @@ const UpdateProduct = () => {
             <Input
               value={name1}
               onChange={(e) => {
-                productInfor.name = e.target.value;
-                setName(productInfor.name);
+                productById.name = e.target.value;
+                setName(productById.name);
               }}
             />
           </Form.Item>
@@ -75,7 +80,7 @@ const UpdateProduct = () => {
               rows={4}
               value={describe1}
               onChange={(e) => {
-                productInfor.describe = e.target.value;
+                productById.describe = e.target.value;
                 setDescribe(e.target.value);
               }}
             />
@@ -84,7 +89,7 @@ const UpdateProduct = () => {
             <Input
               value={cost1}
               onChange={(e) => {
-                productInfor.cost = e.target.value;
+                productById.cost = e.target.value;
                 setCost(e.target.value);
               }}
             />
@@ -93,7 +98,7 @@ const UpdateProduct = () => {
             <Input
               value={image1}
               onChange={(e) => {
-                productInfor.image = e.target.value;
+                productById.image = e.target.value;
                 setImage(e.target.value);
               }}
             />

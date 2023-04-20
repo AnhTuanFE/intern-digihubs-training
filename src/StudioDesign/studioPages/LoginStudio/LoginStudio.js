@@ -14,10 +14,16 @@ function LoginStudio() {
 
   const navigate = useNavigate();
 
-  const userInfor = useSelector((state) => state.userInformation);
-  const { loading, userInformation, error } = userInfor;
-  const inforUser = useSelector((state) => state.dataRegister);
-  const { initRegister } = inforUser;
+  // const userInfor = useSelector((state) => state.userInformation);
+  // const { loading, userInformation, error } = userInfor;
+
+  // const inforUser = useSelector((state) => state.dataRegister);
+  // const { initRegister } = inforUser;
+
+  const userReducerInitState = useSelector(
+    (state) => state.userReducerInitState
+  );
+  const { userInfoStudio, registeredUserInfomation } = userReducerInitState;
 
   const handleLogin = () => {
     dispatch(loginActionStudioRequest({ email, password }));
@@ -25,13 +31,13 @@ function LoginStudio() {
   };
 
   useEffect(() => {
-    if (userInformation || initRegister) {
+    if (userInfoStudio || registeredUserInfomation) {
       message.info("Đăng nhập thành công.");
       navigate("/studio");
     }
-  }, [userInfor, dispatch, inforUser]);
+  }, [userInfoStudio, dispatch]);
 
-  console.log("initRegister = ", initRegister);
+  console.log("registeredUserInfomation = ", registeredUserInfomation);
 
   return (
     <div className={clsx(styles.wrap_login)}>
