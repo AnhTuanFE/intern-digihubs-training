@@ -1,12 +1,9 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./routes";
-
 import DefaulLayout from "./layouts/DefaulLayout";
 import RouteConfirmation from "./routes/RouteConfirmation";
 import "./App.css";
-
-// const LazyProducts = React.lazy(() => import("./component/Products"));
 
 function App() {
   return (

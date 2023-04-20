@@ -1,9 +1,8 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { logoutAction } from "../../reduxSaga/actions/userActions";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import clsx from "clsx";
 import styles from "./UserNav.module.css";

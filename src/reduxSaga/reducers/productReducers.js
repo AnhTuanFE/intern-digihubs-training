@@ -11,19 +11,14 @@ const productInitState = {
 
   // addProductReducer
   //addProductState
-  addOneProduct: {
-    // name: "",
-    // describe: "",
-    // cost: 0,
-    // image: "",
-  },
+  addOneProduct: {},
 
   // deleteProductReducer
   productWillDelete: null,
   errorDeleProduct: null,
 
   // updateProductReducer
-  productUpdate: {
+  productWillUpdate: {
     // id: 0,
     // product: {},
   },
@@ -85,12 +80,12 @@ const productReducers = (state = productInitState, action) => {
     case productconsts.UPDATE_PRODUCT_SUCCESS:
       return {
         ...state,
-        productUpdate: action.product,
+        productWillUpdate: action.product,
       };
     case productconsts.UPDATE_PRODUCT_FAILURE:
       return {
         ...state,
-        productUpdate: null,
+        productWillUpdate: null,
       };
     case productconsts.TEST_GET_LIST_PRODUCT_SUCCESS: {
       return {
