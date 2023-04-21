@@ -6,21 +6,23 @@ import styles from "./HeaderStudio.module.css";
 import clsx from "clsx";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutActionStudio } from "../../../../reduxSaga/actions/userActions";
+import { usersRemainingSelector } from "../../../../reduxSaga/selectors/userSelector";
 
 function HeaderStudio() {
   const dispatch = useDispatch();
 
-  const userReducerInitState = useSelector(
-    (state) => state.userReducerInitState
+  const { userInfoStudio, registeredUserInfomation } = useSelector(
+    usersRemainingSelector
   );
-  const { userInfoStudio, registeredUserInfomation } = userReducerInitState;
-
-  // const inforUser = useSelector((state) => state.dataRegister);
-  // const { initRegister } = inforUser;
-
+  console.log(
+    "userInfoStudio = ",
+    userInfoStudio,
+    "registeredUserInfomation = ",
+    registeredUserInfomation
+  );
   const handleLogout = () => {
-    alert("Đã đăng xuất");
     dispatch(logoutActionStudio());
+    alert("Đã đăng xuất");
   };
   return (
     <Layout>
@@ -50,24 +52,29 @@ function HeaderStudio() {
               <Menu.Item className={clsx(styles.menu_item)} key="project">
                 <a href="">Project</a>
               </Menu.Item>
-              {userInfoStudio == null && registeredUserInfomation == null && (
-                <>
-                  <Menu.Item key="studio">
-                    <Link
-                      className={clsx(styles.menu_item)}
-                      to="/registerstudio"
-                    >
-                      Register
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="loginstudio">
-                    <Link className={clsx(styles.menu_item)} to="/loginstudio">
-                      Login
-                    </Link>
-                  </Menu.Item>
-                </>
-              )}
-              {(userInfoStudio || registeredUserInfomation) && (
+              {Object.keys(userInfoStudio).length === 0 &&
+                Object.keys(registeredUserInfomation).length === 0 && (
+                  <>
+                    <Menu.Item key="studio">
+                      <Link
+                        className={clsx(styles.menu_item)}
+                        to="/registerstudio"
+                      >
+                        Register
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item key="loginstudio">
+                      <Link
+                        className={clsx(styles.menu_item)}
+                        to="/loginstudio"
+                      >
+                        Login
+                      </Link>
+                    </Menu.Item>
+                  </>
+                )}
+              {(Object.keys(userInfoStudio).length > 0 ||
+                Object.keys(registeredUserInfomation).length > 0) && (
                 <Button onClick={handleLogout}>Đăng xuất</Button>
               )}
             </Menu>

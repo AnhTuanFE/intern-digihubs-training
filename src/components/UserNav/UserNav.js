@@ -1,19 +1,16 @@
+import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { logoutAction } from "../../reduxSaga/actions/userActions";
-
-import clsx from "clsx";
+import { usersRemainingSelector } from "../../reduxSaga/selectors/userSelector";
 import styles from "./UserNav.module.css";
 
 const UserNav = () => {
   const dispatch = useDispatch();
-  const userReducerInitState = useSelector(
-    (state) => state.userReducerInitState
-  );
-  const { checkLogin } = userReducerInitState;
-  const check = checkLogin;
+
+  const { checkLogin } = useSelector(usersRemainingSelector);
 
   const navigate = useNavigate();
   const handleMenuClick = (e) => {
@@ -31,10 +28,10 @@ const UserNav = () => {
   };
   const menu = (
     <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1" disabled={!check} danger>
+      <Menu.Item key="1" disabled={!checkLogin} danger>
         Logout
       </Menu.Item>
-      <Menu.Item key="2" disabled={!check}>
+      <Menu.Item key="2" disabled={!checkLogin}>
         Account Information
       </Menu.Item>
     </Menu>

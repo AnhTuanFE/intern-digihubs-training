@@ -8,11 +8,11 @@
       "id": 2
     },
     {
-      "id": 3,
       "name": "Doraemon Fly",
       "describe": "Bạn có khao khát chinh phục bầu trời rộng lớn bao la, trải nghiệm những cảm giác mạnh và chứng tỏ lòng can đảm mạnh mẽ của chính bản thân mình? Hãy cùng tham gia cuộc đua bay lượn lý thú cùng nhóm bạn của chú mèo máy Doraemon dễ thương nhé.",
-      "cost": 50000,
-      "image": "https://cdn0.fahasa.com/media/catalog/product/8/9/8936038723180.jpg"
+      "cost": "500000",
+      "image": "https://cdn0.fahasa.com/media/catalog/product/8/9/8936038723180.jpg",
+      "id": 3
     },
     {
       "name": "Người Lạ Dưới Gió Xuân - Tập 2",
@@ -132,13 +132,6 @@
       "cost": "30000",
       "image": "https://cdn0.fahasa.com/media/catalog/product/t/h/thanh-thach-rave---tap-2.jpg",
       "id": 21
-    },
-    {
-      "name": "sách mới thêm nek",
-      "describe": "không mô tả vì quá pro, sửa tiếp",
-      "cost": "1000000",
-      "image": "https://cdn0.fahasa.com/media/catalog/product/t/h/thanh-thach-rave---tap-3.jpg",
-      "id": 22
     }
   ]
 }

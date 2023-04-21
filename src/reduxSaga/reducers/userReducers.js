@@ -65,7 +65,8 @@ const userReducers = (state = userReducerInitState, action) => {
     case userConsts.LOGOUT_STUDIO: {
       return {
         ...state,
-        userInfoStudio: null,
+        userInfoStudio: {},
+        registeredUserInfomation: {},
         loading: false,
       };
     }

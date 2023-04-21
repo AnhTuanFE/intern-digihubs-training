@@ -8,6 +8,7 @@ import {
 } from "../../../reduxSaga/actions/productActions";
 import clsx from "clsx";
 import styles from "./UpdateProduct.module.css";
+import { productsRemainingSelector } from "../../../reduxSaga/selectors/productSelector";
 const { TextArea } = Input;
 
 const UpdateProduct = () => {
@@ -15,9 +16,7 @@ const UpdateProduct = () => {
   const id = idProduct.id;
 
   const dispatch = useDispatch();
-  // const productInfor = useSelector((state) => state.productId.product);
-  const productInitState = useSelector((state) => state.productInitState);
-  const { productById } = productInitState;
+  const { productById } = useSelector(productsRemainingSelector);
 
   const [name1, setName] = useState("");
   const [describe1, setDescribe] = useState("");

@@ -5,6 +5,7 @@ import { registerActionRequest } from "../../../reduxSaga/actions/userActions";
 import styles from "./RegisterStudio.module.css";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { usersRemainingSelector } from "../../../reduxSaga/selectors/userSelector";
 
 const RegisterStudio = () => {
   const navigate = useNavigate();
@@ -16,19 +17,14 @@ const RegisterStudio = () => {
 
   const dispatch = useDispatch();
 
-  const userReducerInitState = useSelector(
-    (state) => state.userReducerInitState
-  );
-  const { registeredUserInfomation } = userReducerInitState;
-
-  console.log("initRegister = ", registeredUserInfomation);
+  const { registeredUserInfomation } = useSelector(usersRemainingSelector);
 
   useEffect(() => {
-    if (registeredUserInfomation) {
+    if (Object.keys(registeredUserInfomation).length > 0) {
       alert(" Đã đăng ký tài khoản");
       navigate("/studio");
     }
-  }, [userReducerInitState, dispatch]);
+  }, [registeredUserInfomation, dispatch]);
 
   const handleRegister = () => {
     dispatch(registerActionRequest({ name, email, phone, password }));

@@ -1,14 +1,14 @@
-import React from "react";
-import { Button, Space, Layout, Col, Divider, Row, Image } from "antd";
+import clsx from "clsx";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Button, Space, Layout, Col, Divider, Row, Image } from "antd";
 import {
   getListProducts,
   deleteProductRequest,
 } from "../../../reduxSaga/actions/productActions";
-import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import clsx from "clsx";
 import styles from "./AllProducts.module.css";
+import { productsRemainingSelector } from "../../../reduxSaga/selectors/productSelector";
 const { Content } = Layout;
 
 const style = {
@@ -29,10 +29,7 @@ function AllProducts() {
 
   const dispatch = useDispatch();
 
-  const productInitState = useSelector((state) => state.productInitState);
-
-  // const { products, load } = listProducts;
-  const { listProducts } = productInitState;
+  const { listProducts } = useSelector(productsRemainingSelector);
 
   useEffect(() => {
     dispatch(getListProducts());

@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductRequest } from "../../../reduxSaga/actions/productActions";
 import { useParams } from "react-router-dom";
 import { Image } from "antd";
+import { productsRemainingSelector } from "../../../reduxSaga/selectors/productSelector";
 import styles from "./DetailProducts.module.css";
 
 function DetailProducts() {
   const idProduct = useParams();
   const id = idProduct.id;
   const dispatch = useDispatch();
-  const productInitState = useSelector((state) => state.productInitState);
-  const { productById } = productInitState;
+  const { productById } = useSelector(productsRemainingSelector);
 
   useEffect(() => {
     dispatch(getProductRequest(id));

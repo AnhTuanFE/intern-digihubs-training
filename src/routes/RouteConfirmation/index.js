@@ -1,19 +1,9 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-
+import { usersRemainingSelector } from "../../reduxSaga/selectors/userSelector";
 function RouteConfirmation() {
-  const userReducerInitState = useSelector(
-    (state) => state.userReducerInitState
-  );
+  const { checkLogin } = useSelector(usersRemainingSelector);
 
-  const { checkLogin } = userReducerInitState;
-
-  console.log(
-    "userReducerInitState = ",
-    userReducerInitState,
-    "checkLogin = ",
-    checkLogin
-  );
   return checkLogin ? <Outlet /> : <Navigate to="/login" />;
 }
 export default RouteConfirmation;

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"; // useSelector,
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, message } from "antd";
 import clsx from "clsx";
 import styles from "./LoginStudio.module.css";
 import { loginActionStudioRequest } from "../../../reduxSaga/actions/userActions";
-
+import { usersRemainingSelector } from "../../../reduxSaga/selectors/userSelector";
 function LoginStudio() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,16 +14,9 @@ function LoginStudio() {
 
   const navigate = useNavigate();
 
-  // const userInfor = useSelector((state) => state.userInformation);
-  // const { loading, userInformation, error } = userInfor;
-
-  // const inforUser = useSelector((state) => state.dataRegister);
-  // const { initRegister } = inforUser;
-
-  const userReducerInitState = useSelector(
-    (state) => state.userReducerInitState
+  const { userInfoStudio, registeredUserInfomation } = useSelector(
+    usersRemainingSelector
   );
-  const { userInfoStudio, registeredUserInfomation } = userReducerInitState;
 
   const handleLogin = () => {
     dispatch(loginActionStudioRequest({ email, password }));
@@ -31,7 +24,10 @@ function LoginStudio() {
   };
 
   useEffect(() => {
-    if (userInfoStudio || registeredUserInfomation) {
+    if (
+      Object.keys(userInfoStudio).length > 0 ||
+      Object.keys(registeredUserInfomation).length > 0
+    ) {
       message.info("Đăng nhập thành công.");
       navigate("/studio");
     }
